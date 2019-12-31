@@ -1,23 +1,21 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
-use Zend\Captcha\ReCaptcha;
-use ZendService\ReCaptcha\ReCaptcha as ReCaptchaService;
+use Laminas\Captcha\ReCaptcha;
+use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
 
 /**
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage UnitTests
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class ReCaptchaTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,8 +27,8 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (!constant('TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT')) {
-            $this->markTestSkipped('Enable TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
+        if (!constant('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
         }
 
         if (isset($this->word)) {
@@ -38,7 +36,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->captcha = new ReCaptcha(array(
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer'
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer'
         ));
     }
 
@@ -88,7 +86,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($privKey, $captcha->getService()->getPrivateKey());
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testConstructorShouldAllowSettingLangOptionOnServiceObject()
     {
         $options = array('lang'=>'fr');
@@ -96,7 +94,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('fr', $captcha->getService()->getOption('lang'));
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testConstructorShouldAllowSettingThemeOptionOnServiceObject()
     {
         $options = array('theme'=>'black');
@@ -104,7 +102,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('black', $captcha->getService()->getOption('theme'));
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testAllowsSettingLangOptionOnServiceObject()
     {
         $captcha = new ReCaptcha;
@@ -112,7 +110,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('fr', $captcha->getService()->getOption('lang'));
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testAllowsSettingThemeOptionOnServiceObject()
     {
         $captcha = new ReCaptcha;
