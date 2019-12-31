@@ -1,29 +1,27 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
 use ArrayObject;
-use Zend\Captcha\Figlet as FigletCaptcha;
-use Zend\Session\Container as SessionContainer;
-use Zend\View\Renderer\PhpRenderer as View;
+use Laminas\Captcha\Figlet as FigletCaptcha;
+use Laminas\Session\Container as SessionContainer;
+use Laminas\View\Renderer\PhpRenderer as View;
 
 /**
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage UnitTests
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class FigletTest extends CommonWordTest
 {
-    protected $wordClass = 'Zend\Captcha\Figlet';
+    protected $wordClass = 'Laminas\Captcha\Figlet';
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -38,7 +36,7 @@ class FigletTest extends CommonWordTest
         }
 
         $this->captcha = new FigletCaptcha(array(
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer'
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer'
         ));
     }
 
@@ -139,7 +137,7 @@ class FigletTest extends CommonWordTest
     {
         $options = array(
             'name'         => 'foo',
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             'wordLen'      => 6,
             'timeout'      => 300,
         );
@@ -158,7 +156,7 @@ class FigletTest extends CommonWordTest
 
     public function testShouldNotValidateEmptyInputAgainstEmptySession()
     {
-        // Regression Test for ZF-4245
+        // Regression Test for Laminas-4245
         $this->captcha->setName('foo')
                       ->setWordLen(6)
                       ->setTimeout(300);
@@ -176,7 +174,7 @@ class FigletTest extends CommonWordTest
     }
 
     /**
-     * @group ZF-5728
+     * @group Laminas-5728
      */
     public function testSetSessionWorks()
     {
