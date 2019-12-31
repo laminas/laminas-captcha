@@ -1,16 +1,16 @@
 # CAPTCHA Adapters
 
-zend-captcha defines an abstraction for CAPTCHA implementations via
-`Zend\Captcha\AdapterInterface`, and provides several implementations.
+laminas-captcha defines an abstraction for CAPTCHA implementations via
+`Laminas\Captcha\AdapterInterface`, and provides several implementations.
 
 ## The AdapterInterface
 
-All CAPTCHA adapters implement `Zend\Captcha\AdapterInterface`:
+All CAPTCHA adapters implement `Laminas\Captcha\AdapterInterface`:
 
 ```php
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 interface AdapterInterface extends ValidatorInterface
 {
@@ -35,19 +35,19 @@ Most implementations also define a `render()` method (or delegate to one) in
 order to produce a CAPTCHA representation, be it an image, a figlet, a logic
 problem, or some other CAPTCHA.
 
-## Zend\\Captcha\\AbstractWord
+## Laminas\\Captcha\\AbstractWord
 
-`Zend\Captcha\AbstractWord` is an abstract adapter that serves as the base class
+`Laminas\Captcha\AbstractWord` is an abstract adapter that serves as the base class
 for most other CAPTCHA adapters. It provides mutators for specifying word
 length, session TTL and the session container object to use; it also
 encapsulates validation logic.
 
 By default, the word length is 8 characters, the session timeout is 5 minutes,
-and `Zend\Session\Container` is used for persistence (using the namespace
-"`Zend\Form\Captcha\<captcha ID>`").
+and `Laminas\Session\Container` is used for persistence (using the namespace
+"`Laminas\Form\Captcha\<captcha ID>`").
 
-In addition to the methods required by the `Zend\Captcha\AdapterInterface` interface,
-`Zend\Captcha\AbstractWord` exposes the following methods:
+In addition to the methods required by the `Laminas\Captcha\AdapterInterface` interface,
+`Laminas\Captcha\AbstractWord` exposes the following methods:
 
 - `setWordLen($length)` and `getWordLen()` allow you to specify the length of
   the generated "word" in characters, and to retrieve the current value.
@@ -58,12 +58,12 @@ In addition to the methods required by the `Zend\Captcha\AdapterInterface` inter
   numbers will be considered as possible characters for the random word, or if
   only letters would be used.
 - `setSessionClass($class)` and `getSessionClass()` allow you to specify an
-  alternate `Zend\Session\Container` implementation to use to persist the
+  alternate `Laminas\Session\Container` implementation to use to persist the
   CAPTCHA token and to retrieve the current value.
 - `getId()` allows you to retrieve the current token identifier.
 - `getWord()` allows you to retrieve the generated word to use with the CAPTCHA.
   It will generate the word for you if none has been generated yet.
-- `setSession(Zend\Session\Container $session)` allows you to specify a session
+- `setSession(Laminas\Session\Container $session)` allows you to specify a session
   object to use for persisting the CAPTCHA token. `getSession()` allows you to
   retrieve the current session object.
 
@@ -75,35 +75,35 @@ other ways.
 
 > ### AbstractWord is marked abstract
 >
-> `Zend\Captcha\AbstractWord` is an abstract class and may not be instantiated
+> `Laminas\Captcha\AbstractWord` is an abstract class and may not be instantiated
 > directly.
 
-## Zend\\Captcha\\Dumb
+## Laminas\\Captcha\\Dumb
 
-The `Zend\Captcha\Dumb` adapter is mostly self-descriptive. It provides a random
+The `Laminas\Captcha\Dumb` adapter is mostly self-descriptive. It provides a random
 string that must be typed in reverse to validate. As such, it's not a good
 CAPTCHA solution and should only be used for testing. It extends
-`Zend\Captcha\AbstractWord`.
+`Laminas\Captcha\AbstractWord`.
 
-## Zend\\Captcha\\Figlet
+## Laminas\\Captcha\\Figlet
 
-The `Zend\Captcha\Figlet` adapter utilizes `Zend\Text\Figlet` to present a
+The `Laminas\Captcha\Figlet` adapter utilizes `Laminas\Text\Figlet` to present a
 figlet to the user.
 
 Options passed to the constructor will also be passed to the
-`Zend\Text\Figlet` object. See the
-[`Zend\Text\Figlet`](https://docs.zendframework.com/zend-text/figlet/)
+`Laminas\Text\Figlet` object. See the
+[`Laminas\Text\Figlet`](https://docs.laminas.dev/laminas-text/figlet/)
 documentation for details on what configuration options are available.
 
-## Zend\\Captcha\\Image
+## Laminas\\Captcha\\Image
 
-The `Zend\Captcha\Image` adapter takes the generated word and renders it as an
+The `Laminas\Captcha\Image` adapter takes the generated word and renders it as an
 image, performing various skewing permutations to make it difficult to
 automatically decipher. It requires the [GD extension](http://php.net/gd),
-compiled with TrueType or Freetype support. Currently, the `Zend\Captcha\Image`
+compiled with TrueType or Freetype support. Currently, the `Laminas\Captcha\Image`
 adapter can only generate PNG images.
 
-`Zend\Captcha\Image` extends `Zend\Captcha\AbstractWord`, and additionally
+`Laminas\Captcha\Image` extends `Laminas\Captcha\AbstractWord`, and additionally
 exposes the following methods:
 
 - `setExpiration($expiration)` and `getExpiration()` allow you to specify a
@@ -145,9 +145,9 @@ All of the above options may be passed to the constructor by simply removing the
 'set' method prefix and casting the initial letter to lowercase: "suffix",
 "height", "imgUrl", etc.
 
-## Zend\\Captcha\\ReCaptcha
+## Laminas\\Captcha\\ReCaptcha
 
-The `Zend\Captcha\ReCaptcha` adapter uses [`Zend\Service\ReCaptcha\ReCaptcha`](https://github.com/zendframework/ZendService_ReCaptcha)
+The `Laminas\Captcha\ReCaptcha` adapter uses [`Laminas\Service\ReCaptcha\ReCaptcha`](https://github.com/laminas/laminas-recaptcha)
 to generate and validate CAPTCHAs.  It exposes the following methods:
 
 - `setSecretKey($key)` and `getSecretKey()` allow you to specify the secret key to
@@ -156,15 +156,15 @@ to generate and validate CAPTCHAs.  It exposes the following methods:
 - `setSiteKey($key)` and `getSiteKey()` allow you to specify the site key to use
   with the ReCaptcha service. This must be specified during construction,
   although it may be overridden at any point.
-- `setService(ZendService\ReCaptcha\ReCaptcha $service)` and `getService()`
+- `setService(Laminas\ReCaptcha\ReCaptcha $service)` and `getService()`
   allow you to set and get the ReCaptcha service object.
 
-When constructing `Zend\Captcha\ReCaptcha`, you can use the same set of keys
-to the `$options` array as supported by [`Zend\Service\ReCaptcha\ReCaptcha`](https://github.com/zendframework/ZendService_ReCaptcha).
+When constructing `Laminas\Captcha\ReCaptcha`, you can use the same set of keys
+to the `$options` array as supported by [`Laminas\Service\ReCaptcha\ReCaptcha`](https://github.com/laminas/laminas-recaptcha).
 
 ### Updating from v2 to v3 of this adapter
 
-As this adapter takes the same option keys as [`Zend\Service\ReCaptcha\ReCaptcha`](https://github.com/zendframework/ZendService_ReCaptcha) which supports Recaptcha API v2, this
+As this adapter takes the same option keys as [`Laminas\Service\ReCaptcha\ReCaptcha`](https://github.com/laminas/laminas-recaptcha) which supports Recaptcha API v2, this
 component no longer supports the `ssl`, `xhtml` and `lang` keys in the `$options`
 array that is passed to the constructor.
 
