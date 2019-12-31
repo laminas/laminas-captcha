@@ -6,9 +6,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Adds and publishes documentation to https://zendframework.github.io/zend-captcha/
-- [#20](https://github.com/zendframework/zend-captcha/pull/20) adds support for
-  zend-math v3.
+- Adds and publishes documentation to https://docs.laminas.dev/laminas-captcha/
+- [zendframework/zend-captcha#20](https://github.com/zendframework/zend-captcha/pull/20) adds support for
+  laminas-math v3.
 
 ### Deprecated
 
@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#20](https://github.com/zendframework/zend-captcha/pull/20) removes support for
+- [zendframework/zend-captcha#20](https://github.com/zendframework/zend-captcha/pull/20) removes support for
   PHP 5.5
 
 ### Fixed
@@ -39,7 +39,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- [#18](https://github.com/zendframework/zend-captcha/pull/18) updates
+- [zendframework/zend-captcha#18](https://github.com/zendframework/zend-captcha/pull/18) updates
   dependencies to known-stable, forwards-compatible versions.
 
 ## 2.5.3 - 2016-02-22
@@ -58,7 +58,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- [#6](https://github.com/zendframework/zend-captcha/pull/6) ensures that `null`
+- [zendframework/zend-captcha#6](https://github.com/zendframework/zend-captcha/pull/6) ensures that `null`
   values may be passed for options.
 
 ## 2.5.2 - 2015-11-23
@@ -77,7 +77,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- **ZF2015-09**: `Zend\Captcha\Word` generates a "word" for a CAPTCHA challenge
+- **ZF2015-09**: `Laminas\Captcha\Word` generates a "word" for a CAPTCHA challenge
   by selecting a sequence of random letters from a character set. Prior to this
   vulnerability announcement, the selection was performed using PHP's internal
   `array_rand()` function. This function does not generate sufficient entropy
@@ -85,7 +85,7 @@ All notable changes to this project will be documented in this file, in reverse 
   such as `openssl_pseudo_random_bytes()`. This could potentially lead to
   information disclosure should an attacker be able to brute force the random
   number generation. This release contains a patch that replaces the
-  `array_rand()` calls to use `Zend\Math\Rand::getInteger()`, which provides
+  `array_rand()` calls to use `Laminas\Math\Rand::getInteger()`, which provides
   better RNG.
 
 ## 2.4.9 - 2015-11-23
@@ -104,7 +104,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- **ZF2015-09**: `Zend\Captcha\Word` generates a "word" for a CAPTCHA challenge
+- **ZF2015-09**: `Laminas\Captcha\Word` generates a "word" for a CAPTCHA challenge
   by selecting a sequence of random letters from a character set. Prior to this
   vulnerability announcement, the selection was performed using PHP's internal
   `array_rand()` function. This function does not generate sufficient entropy
@@ -112,5 +112,5 @@ All notable changes to this project will be documented in this file, in reverse 
   such as `openssl_pseudo_random_bytes()`. This could potentially lead to
   information disclosure should an attacker be able to brute force the random
   number generation. This release contains a patch that replaces the
-  `array_rand()` calls to use `Zend\Math\Rand::getInteger()`, which provides
+  `array_rand()` calls to use `Laminas\Math\Rand::getInteger()`, which provides
   better RNG.

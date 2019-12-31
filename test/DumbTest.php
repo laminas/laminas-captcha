@@ -1,22 +1,21 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
-use Zend\Captcha\Dumb as DumbCaptcha;
+use Laminas\Captcha\Dumb as DumbCaptcha;
 
 /**
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class DumbTest extends CommonWordTest
 {
-    protected $wordClass = 'Zend\Captcha\Dumb';
+    protected $wordClass = 'Laminas\Captcha\Dumb';
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -31,7 +30,7 @@ class DumbTest extends CommonWordTest
         }
 
         $this->captcha = new DumbCaptcha([
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
         ]);
     }
 
@@ -72,7 +71,7 @@ class DumbTest extends CommonWordTest
     }
 
     /**
-     * @group ZF-11522
+     * @group Laminas-11522
      */
     public function testDefaultLabelIsUsedWhenNoAlternateLabelSet()
     {
@@ -80,7 +79,7 @@ class DumbTest extends CommonWordTest
     }
 
     /**
-     * @group ZF-11522
+     * @group Laminas-11522
      */
     public function testChangeLabelViaSetterMethod()
     {
