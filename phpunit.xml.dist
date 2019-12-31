@@ -4,7 +4,7 @@
          bootstrap="./vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="zend-captcha Test Suite">
+        <testsuite name="laminas-captcha Test Suite">
             <directory>./test/</directory>
         </testsuite>
     </testsuites>
@@ -24,13 +24,13 @@
     <php>
         <ini name="date.timezone" value="UTC"/>
 
-        <!-- Enable this if you have installed ZendService\ReCaptcha on the
+        <!-- Enable this if you have installed Laminas\ReCaptcha on the
              include_path or via Composer. -->
-        <env name="TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT" value="false" />
+        <env name="TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT" value="false" />
 
         <!-- Enable this to test GC operations. These often fail in parallel
              build environments. -->
-        <env name="TESTS_ZEND_CAPTCHA_GC" value="false" />
+        <env name="TESTS_LAMINAS_CAPTCHA_GC" value="false" />
 
     </php>
 </phpunit>
