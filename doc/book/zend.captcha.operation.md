@@ -2,12 +2,12 @@
 
 ## The AdapterInterface
 
-All *CAPTCHA* adapters implement `Zend\Captcha\AdapterInterface`, which looks like the following:
+All *CAPTCHA* adapters implement `Laminas\Captcha\AdapterInterface`, which looks like the following:
 
 ``` sourceCode
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 interface AdapterInterface extends ValidatorInterface
 {
@@ -34,7 +34,7 @@ A simple use case might look like the following:
 
 ``` sourceCode
 // Originating request:
-$captcha = new Zend\Captcha\Figlet(array(
+$captcha = new Laminas\Captcha\Figlet(array(
     'name' => 'foo',
     'wordLen' => 6,
     'timeout' => 300,
@@ -55,6 +55,6 @@ if ($captcha->isValid($_POST['foo'], $_POST)) {
 ```
 
 > ## Note
-Under most circumstances, you probably prefer the use of `Zend\Captcha` functionality combined with
-the power of the `Zend\Form` component. For an example on how to use `Zend\Form\Element\Captcha`,
-have a look at the \[Zend\\Form Quick Start\](zend.form.quick-start).
+Under most circumstances, you probably prefer the use of `Laminas\Captcha` functionality combined with
+the power of the `Laminas\Form` component. For an example on how to use `Laminas\Form\Element\Captcha`,
+have a look at the \[Laminas\\Form Quick Start\](laminas.form.quick-start).

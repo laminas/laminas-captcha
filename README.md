@@ -1,14 +1,14 @@
-# zend-captcha
+# laminas-captcha
 
-[![Build Status](https://secure.travis-ci.org/zendframework/zend-captcha.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-captcha)
-[![Coverage Status](https://coveralls.io/repos/zendframework/zend-captcha/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-captcha?branch=master)
+[![Build Status](https://travis-ci.org/laminas/laminas-captcha.svg?branch=master)](https://travis-ci.org/laminas/laminas-captcha)
+[![Coverage Status](https://coveralls.io/repos/laminas/laminas-captcha/badge.svg?branch=master)](https://coveralls.io/r/laminas/laminas-captcha?branch=master)
 
-`Zend\Captcha` component is able to manage “Completely Automated Public Turing
+`Laminas\Captcha` component is able to manage “Completely Automated Public Turing
 test to tell Computers and Humans Apart” (CAPTCHA); it is used as a challenge-response
 to ensure that the individual submitting information is a human and not an
 automated process. Typically, a captcha is used with form submissions where
 authenticated users are not necessary, but you want to prevent spam submissions.
 
 
-- File issues at https://github.com/zendframework/zend-captcha/issues
-- Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-captcha
+- File issues at https://github.com/laminas/laminas-captcha/issues
+- Documentation is at https://docs.laminas.dev/laminas-captcha
