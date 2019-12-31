@@ -1,4 +1,4 @@
-# Introduction to Zend\\Captcha
+# Introduction to Laminas\\Captcha
 
 [CAPTCHA](http://en.wikipedia.org/wiki/Captcha) stands for "Completely Automated Public Turing test
 to tell Computers and Humans Apart"; it is used as a challenge-response to ensure that the
@@ -9,6 +9,6 @@ submissions.
 ## Overview
 
 Captchas can take a variety of forms, including asking logic questions, presenting skewed fonts, and
-presenting multiple images and asking how they relate. The `Zend\Captcha` component aims to provide
+presenting multiple images and asking how they relate. The `Laminas\Captcha` component aims to provide
 a variety of back ends that may be utilized either standalone or in conjunction with the
-\[Zend\\Form component\](zend.form.intro).
+\[Laminas\\Form component\](laminas.form.intro).
