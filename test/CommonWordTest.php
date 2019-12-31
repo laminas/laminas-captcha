@@ -1,16 +1,15 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
 /**
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 abstract class CommonWordTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,13 +21,13 @@ abstract class CommonWordTest extends \PHPUnit_Framework_TestCase
     protected $wordClass;
 
     /**
-     * @group ZF2-91
+     * @group Laminas-91
      */
     public function testLoadInvalidSessionClass()
     {
         $wordAdapter = new $this->wordClass;
-        $wordAdapter->setSessionClass('ZendTest\Captcha\InvalidClassName');
-        $this->setExpectedException('Zend\Captcha\Exception\InvalidArgumentException', 'not found');
+        $wordAdapter->setSessionClass('LaminasTest\Captcha\InvalidClassName');
+        $this->setExpectedException('Laminas\Captcha\Exception\InvalidArgumentException', 'not found');
         $wordAdapter->getSession();
     }
 
