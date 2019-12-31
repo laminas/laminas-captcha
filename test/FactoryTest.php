@@ -1,17 +1,16 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
 use DirectoryIterator;
+use Laminas\Captcha;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Captcha;
 
 class FactoryTest extends TestCase
 {
@@ -40,7 +39,7 @@ class FactoryTest extends TestCase
      * Determine system TMP directory
      *
      * @return string
-     * @throws Zend_File_Transfer_Exception if unable to determine directory
+     * @throws Laminas_File_Transfer_Exception if unable to determine directory
      */
     protected function getTmpDir()
     {
@@ -63,7 +62,7 @@ class FactoryTest extends TestCase
             $this->markTestSkipped("Image CAPTCHA requires FT fonts support");
         }
 
-        $this->testDir = $this->getTmpDir() . '/ZF_test_images';
+        $this->testDir = $this->getTmpDir() . '/Laminas_test_images';
         if (!is_dir($this->testDir)) {
             @mkdir($this->testDir);
         }
@@ -72,12 +71,12 @@ class FactoryTest extends TestCase
     public function testCanCreateDumbCaptcha()
     {
         $captcha = Captcha\Factory::factory(array(
-            'class' => 'Zend\Captcha\Dumb',
+            'class' => 'Laminas\Captcha\Dumb',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Dumb', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Dumb', $captcha);
     }
 
     public function testCanCreateDumbCaptchaUsingShortName()
@@ -85,21 +84,21 @@ class FactoryTest extends TestCase
         $captcha = Captcha\Factory::factory(array(
             'class' => 'dumb',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Dumb', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Dumb', $captcha);
     }
 
     public function testCanCreateFigletCaptcha()
     {
         $captcha = Captcha\Factory::factory(array(
-            'class' => 'Zend\Captcha\Figlet',
+            'class' => 'Laminas\Captcha\Figlet',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Figlet', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Figlet', $captcha);
     }
 
     public function testCanCreateFigletCaptchaUsingShortName()
@@ -107,24 +106,24 @@ class FactoryTest extends TestCase
         $captcha = Captcha\Factory::factory(array(
             'class' => 'figlet',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Figlet', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Figlet', $captcha);
     }
 
     public function testCanCreateImageCaptcha()
     {
         $this->setUpImageTest();
         $captcha = Captcha\Factory::factory(array(
-            'class' => 'Zend\Captcha\Image',
+            'class' => 'Laminas\Captcha\Image',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
                 'imgDir'       => $this->testDir,
                 'font'         => __DIR__. '/../Pdf/_fonts/Vera.ttf',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Image', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Image', $captcha);
     }
 
     public function testCanCreateImageCaptchaUsingShortName()
@@ -133,48 +132,48 @@ class FactoryTest extends TestCase
         $captcha = Captcha\Factory::factory(array(
             'class' => 'image',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
                 'imgDir'       => $this->testDir,
                 'font'         => __DIR__. '/../Pdf/_fonts/Vera.ttf',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\Image', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\Image', $captcha);
     }
 
     public function testCanCreateReCaptcha()
     {
-        if (!constant('TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT')) {
-            $this->markTestSkipped('Enable TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
+        if (!constant('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
         }
 
         $captcha = Captcha\Factory::factory(array(
-            'class' => 'Zend\Captcha\ReCaptcha',
+            'class' => 'Laminas\Captcha\ReCaptcha',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\ReCaptcha', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\ReCaptcha', $captcha);
     }
 
     public function testCanCreateReCaptchaUsingShortName()
     {
-        if (!constant('TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT')) {
-            $this->markTestSkipped('Enable TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
+        if (!constant('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
         }
 
         $captcha = Captcha\Factory::factory(array(
             'class' => 'recaptcha',
             'options' => array(
-                'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             ),
         ));
-        $this->assertInstanceOf('Zend\Captcha\ReCaptcha', $captcha);
+        $this->assertInstanceOf('Laminas\Captcha\ReCaptcha', $captcha);
     }
 
     public function testOptionsArePassedToCaptchaAdapter()
     {
         $captcha = Captcha\Factory::factory(array(
-            'class'   => 'ZendTest\Captcha\TestAsset\MockCaptcha',
+            'class'   => 'LaminasTest\Captcha\TestAsset\MockCaptcha',
             'options' => array(
                 'foo' => 'bar',
             ),
