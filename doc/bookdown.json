@@ -1,9 +1,9 @@
 {
-    "title": "Zend\\Captcha",
+    "title": "Laminas\\Captcha",
     "target": "html/",
     "content": [
-        "book/zend.captcha.intro.md",
-        "book/zend.captcha.operation.md",
-        "book/zend.captcha.adapters.md"
+        "book/laminas.captcha.intro.md",
+        "book/laminas.captcha.operation.md",
+        "book/laminas.captcha.adapters.md"
     ]
 }
