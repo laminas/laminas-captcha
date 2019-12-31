@@ -1,21 +1,20 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
-use Zend\Captcha\ReCaptcha;
-use Zend\Http\Client as HttpClient;
-use Zend\Http\Client\Adapter\Socket;
-use ZendService\ReCaptcha\ReCaptcha as ReCaptchaService;
+use Laminas\Captcha\ReCaptcha;
+use Laminas\Http\Client\Adapter\Socket;
+use Laminas\Http\Client as HttpClient;
+use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
 
 /**
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class ReCaptchaTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,8 +26,8 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        if (! getenv('TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT')) {
-            $this->markTestSkipped('Enable TESTS_ZEND_CAPTCHA_RECAPTCHA_SUPPORT to test Recaptcha');
+        if (! getenv('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test Recaptcha');
         }
     }
 
@@ -136,7 +135,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testConstructorShouldAllowSettingThemeOptionOnServiceObject()
     {
         $options = ['theme' => 'dark'];
@@ -144,7 +143,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('dark', $captcha->getService()->getOption('theme'));
     }
 
-    /** @group ZF-7654 */
+    /** @group Laminas-7654 */
     public function testAllowsSettingThemeOptionOnServiceObject()
     {
         $captcha = new ReCaptcha;
@@ -161,16 +160,16 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
     public function testValidationForDifferentElementName()
     {
         $captcha = new ReCaptcha([
-            'site_key' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_SITE_KEY'),
-            'secret_key' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_SECRET_KEY'),
+            'site_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
+            'secret_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SECRET_KEY'),
         ]);
         $service = $captcha->getService();
         $service->setIp('127.0.0.1');
         $service->setHttpClient($this->getHttpClient());
 
-        $response = getenv('TESTS_ZEND_SERVICE_RECAPTCHA_RESPONSE');
+        $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
         $value = 'g-recaptcha-response';
-        $context = ['g-recaptcha-response' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_RESPONSE')];
+        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }
@@ -178,16 +177,16 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
     public function testValidationForResponseElementName()
     {
         $captcha = new ReCaptcha([
-            'site_key' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_SITE_KEY'),
-            'secret_key' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_SECRET_KEY'),
+            'site_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
+            'secret_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SECRET_KEY'),
         ]);
         $service = $captcha->getService();
         $service->setIp('127.0.0.1');
         $service->setHttpClient($this->getHttpClient());
 
-        $response = getenv('TESTS_ZEND_SERVICE_RECAPTCHA_RESPONSE');
-        $value = getenv('TESTS_ZEND_SERVICE_RECAPTCHA_RESPONSE');
-        $context = ['g-recaptcha-response' => getenv('TESTS_ZEND_SERVICE_RECAPTCHA_RESPONSE')];
+        $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
+        $value = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
+        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }
