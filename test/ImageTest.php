@@ -1,24 +1,22 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
 use DirectoryIterator;
-use Zend\Captcha\Image as ImageCaptcha;
-use Zend\View\Renderer\PhpRenderer as View;
+use Laminas\Captcha\Image as ImageCaptcha;
+use Laminas\View\Renderer\PhpRenderer as View;
 
 /**
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage UnitTests
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class ImageTest extends \PHPUnit_Framework_TestCase
 {
@@ -47,13 +45,13 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             unset($this->word);
         }
 
-        $this->testDir = $this->getTmpDir() . '/ZF_test_images';
+        $this->testDir = $this->getTmpDir() . '/Laminas_test_images';
         if (!is_dir($this->testDir)) {
             @mkdir($this->testDir);
         }
 
         $this->captcha = new ImageCaptcha(array(
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             'imgDir'       => $this->testDir,
             'font'         => __DIR__. '/_files/Vera.ttf',
         ));
@@ -79,7 +77,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      * Determine system TMP directory
      *
      * @return string
-     * @throws Zend_File_Transfer_Exception if unable to determine directory
+     * @throws Laminas_File_Transfer_Exception if unable to determine directory
      */
     protected function getTmpDir()
     {
@@ -128,7 +126,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @group ZF-10006
+     * @group Laminas-10006
      */
     public function testCaptchaImageCleanupOnlyCaptchaFilesIdentifiedByTheirSuffix()
     {
@@ -137,7 +135,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(file_exists($filename));
 
         //Create other cache file
-        $otherFile = $this->testDir . "/zf10006.cache";
+        $otherFile = $this->testDir . "/laminas10006.cache";
         file_put_contents($otherFile, '');
         $this->assertTrue(file_exists($otherFile));
         $this->captcha->setExpiration(1);
@@ -223,14 +221,14 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testNoFontProvidedWillThrowException()
     {
-        $this->setExpectedException('Zend\Captcha\Exception\NoFontProvidedException');
+        $this->setExpectedException('Laminas\Captcha\Exception\NoFontProvidedException');
         $captcha = new ImageCaptcha();
         $captcha->generate();
     }
 
     public function testImageProvidedNotLoadableWillThrowException()
     {
-        $this->setExpectedException('Zend\Captcha\Exception\ImageNotLoadableException');
+        $this->setExpectedException('Laminas\Captcha\Exception\ImageNotLoadableException');
         $captcha = new ImageCaptcha(array(
             'font'       => __DIR__. '/../Pdf/_fonts/Vera.ttf',
             'startImage' => 'file_not_found.png',
