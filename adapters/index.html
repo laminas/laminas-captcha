@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="laminas-captcha">  
+    <link rel="canonical" href="https://docs.laminas.dev/adapters/">
+    <link rel="shortcut icon" href="/img/trademark-laminas-foundation-rgb.svg">
+
+    <title>Adapters - laminas-captcha - Laminas Docs</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body id="page-top" class="components">
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        
+        <a class="logo-link navbar-brand offset-md-2" href="https://getlaminas.org/" data-tooltip data-placement="bottom" title="Go to the Laminas homepage">
+            <img src="../img/laminas-foundation-white.svg" height="28" alt="Lamnias">
+        </a>
+        <a class="navbar-title" href="https://docs.laminas.dev/" data-tooltip data-placement="bottom" title="Go to the Laminas Documentation">
+            Documentation
+        </a>
+
+        
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="https://getlaminas.org/about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://getlaminas.org/blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://docs.laminas.dev" class="nav-link">All Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://getlaminas.org/participate" class="nav-link">Community</a>
+                </li>
+            </ul>
+
+            
+            
+                <div class="d-block d-sm-none">
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="..">laminas-captcha</a>
+        </h4>
+
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
+
+        <ul class="subnavigation__list">
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href=".." class="subnavigation__link">laminas-captcha</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href="../intro/" class="subnavigation__link">Intro</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href="../usage/" class="subnavigation__link">Usage</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item subnavigation__list-item--active">
+                                <a href="./" class="subnavigation__link">Adapters</a>
+                            </li>
+                        
+                    
+                
+            
+        </ul>
+    </div>
+
+                </div>
+            
+
+            
+            <div class="d-block d-sm-none">
+                <div class="component-selector">
+    
+    <h5 class="component-selector__subtitle">Find documentation…</h5>
+    <select class="form-control component-selector__control">
+        <option value="/">Overview</option>
+        <optgroup label="Components"></optgroup>
+    </select>
+</div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    
+    <header class="header">
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="col-6 offset-md-2">
+                <h1 class="header__title">
+                    Components
+
+                    
+                        <small class="header__subtitle">laminas-captcha</small>
+                    
+                </h1>
+            </div>
+
+            
+            <div class="col-4 text-sm-right">
+                
+                    
+
+                    <a href="#" class="header__link header__link--search" data-toggle="modal" data-target="#mkdocs_search_modal" title="Open search">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                    <a href="https://github.com/laminas/laminas-captcha/" class="header__link header__link--github" title="Go to repository of laminas-captcha">
+                        <i class="fa fa-github"></i> GitHub
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-12">
+                
+    
+
+    
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+                
+                    <li class="toc__entry">
+                        <a href="#the-adapterinterface" class="toc__link">The AdapterInterface</a>
+                    </li>
+                
+                    <li class="toc__entry">
+                        <a href="#laminas92captcha92abstractword" class="toc__link">Laminas\Captcha\AbstractWord</a>
+                    </li>
+                
+                    <li class="toc__entry">
+                        <a href="#laminas92captcha92dumb" class="toc__link">Laminas\Captcha\Dumb</a>
+                    </li>
+                
+                    <li class="toc__entry">
+                        <a href="#laminas92captcha92figlet" class="toc__link">Laminas\Captcha\Figlet</a>
+                    </li>
+                
+                    <li class="toc__entry">
+                        <a href="#laminas92captcha92image" class="toc__link">Laminas\Captcha\Image</a>
+                    </li>
+                
+                    <li class="toc__entry">
+                        <a href="#laminas92captcha92recaptcha" class="toc__link">Laminas\Captcha\ReCaptcha</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+
+            </div>
+            <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
+                
+                    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        
+            <li class="breadcrumb-item"><a href="">Overview</a></li>
+
+            
+                <li class="breadcrumb-item"><a href="..">laminas-captcha</a></li>
+
+                
+
+                <li class="breadcrumb-item active" aria-current="page">Adapters</li>
+            
+        
+    </ol>
+</nav>
+
+
+
+
+
+
+    
+    
+
+    <h1 id="captcha-adapters">CAPTCHA Adapters</h1>
+<p>laminas-captcha defines an abstraction for CAPTCHA implementations via
+<code>Laminas\Captcha\AdapterInterface</code>, and provides several implementations.</p>
+<h2 id="the-adapterinterface">The AdapterInterface</h2>
+<p>All CAPTCHA adapters implement <code>Laminas\Captcha\AdapterInterface</code>:</p>
+<p> <div class=codehilite><pre><span></span><span class=x>namespace Laminas\Captcha;</span>
+
+<span class=x>use Laminas\Validator\ValidatorInterface;</span>
+
+<span class=x>interface AdapterInterface extends ValidatorInterface</span>
+<span class=x>{</span>
+<span class=x>    public function generate();</span>
+
+<span class=x>    public function setName($name);</span>
+
+<span class=x>    public function getName();</span>
+
+<span class=x>    // Get helper name used for rendering this CAPTCHA type</span>
+<span class=x>    public function getHelperName();</span>
+<span class=x>}</span>
+</pre></div></p>
+<p>The <code>name</code> setter and getter are used to specify and retrieve the CAPTCHA identifier.</p>
+<p>The most interesting method is <code>generate()</code>, which is used to create the CAPTCHA
+token. This process typically will store the token in the session so that you
+may compare against it in subsequent requests.</p>
+<p>Most implementations also define a <code>render()</code> method (or delegate to one) in
+order to produce a CAPTCHA representation, be it an image, a figlet, a logic
+problem, or some other CAPTCHA.</p>
+<h2 id="laminas92captcha92abstractword">Laminas\Captcha\AbstractWord</h2>
+<p><code>Laminas\Captcha\AbstractWord</code> is an abstract adapter that serves as the base class
+for most other CAPTCHA adapters. It provides mutators for specifying word
+length, session TTL and the session container object to use; it also
+encapsulates validation logic.</p>
+<p>By default, the word length is 8 characters, the session timeout is 5 minutes,
+and <code>Laminas\Session\Container</code> is used for persistence (using the namespace
+"<code>Laminas\Form\Captcha\&lt;captcha ID&gt;</code>").</p>
+<p>In addition to the methods required by the <code>Laminas\Captcha\AdapterInterface</code> interface,
+<code>Laminas\Captcha\AbstractWord</code> exposes the following methods:</p>
+<ul>
+<li><code>setWordLen($length)</code> and <code>getWordLen()</code> allow you to specify the length of
+  the generated "word" in characters, and to retrieve the current value.</li>
+<li><code>setTimeout($ttl)</code> and <code>getTimeout()</code> allow you to specify the time-to-live of
+  the session token, and to retrieve the current value. <code>$ttl</code> should be
+  specified in <em>seconds</em>.</li>
+<li><code>setUseNumbers($numbers)</code> and <code>getUseNumbers()</code> allow you to specify if
+  numbers will be considered as possible characters for the random word, or if
+  only letters would be used.</li>
+<li><code>setSessionClass($class)</code> and <code>getSessionClass()</code> allow you to specify an
+  alternate <code>Laminas\Session\Container</code> implementation to use to persist the
+  CAPTCHA token and to retrieve the current value.</li>
+<li><code>getId()</code> allows you to retrieve the current token identifier.</li>
+<li><code>getWord()</code> allows you to retrieve the generated word to use with the CAPTCHA.
+  It will generate the word for you if none has been generated yet.</li>
+<li><code>setSession(Laminas\Session\Container $session)</code> allows you to specify a session
+  object to use for persisting the CAPTCHA token. <code>getSession()</code> allows you to
+  retrieve the current session object.</li>
+</ul>
+<p>All word CAPTCHAs allow you to pass an array of options or a <code>Traversable</code>
+object to the constructor, or, alternately, pass them to <code>setOptions()</code>. By
+default, the <code>wordLen</code>, <code>timeout</code>, and <code>sessionClass</code> keys may all be used. Each
+concrete implementation may define additional keys or utilize the options in
+other ways.</p>
+<blockquote>
+<h3>AbstractWord is marked abstract</h3>
+<p><code>Laminas\Captcha\AbstractWord</code> is an abstract class and may not be instantiated
+directly.</p>
+</blockquote>
+<h2 id="laminas92captcha92dumb">Laminas\Captcha\Dumb</h2>
+<p>The <code>Laminas\Captcha\Dumb</code> adapter is mostly self-descriptive. It provides a random
+string that must be typed in reverse to validate. As such, it's not a good
+CAPTCHA solution and should only be used for testing. It extends
+<code>Laminas\Captcha\AbstractWord</code>.</p>
+<h2 id="laminas92captcha92figlet">Laminas\Captcha\Figlet</h2>
+<p>The <code>Laminas\Captcha\Figlet</code> adapter utilizes <code>Laminas\Text\Figlet</code> to present a
+figlet to the user.</p>
+<p>Options passed to the constructor will also be passed to the
+<code>Laminas\Text\Figlet</code> object. See the
+<a href="https://docs.laminas.dev/laminas-text/figlet/"><code>Laminas\Text\Figlet</code></a>
+documentation for details on what configuration options are available.</p>
+<h2 id="laminas92captcha92image">Laminas\Captcha\Image</h2>
+<p>The <code>Laminas\Captcha\Image</code> adapter takes the generated word and renders it as an
+image, performing various skewing permutations to make it difficult to
+automatically decipher. It requires the <a href="http://php.net/gd">GD extension</a>,
+compiled with TrueType or Freetype support. Currently, the <code>Laminas\Captcha\Image</code>
+adapter can only generate PNG images.</p>
+<p><code>Laminas\Captcha\Image</code> extends <code>Laminas\Captcha\AbstractWord</code>, and additionally
+exposes the following methods:</p>
+<ul>
+<li><code>setExpiration($expiration)</code> and <code>getExpiration()</code> allow you to specify a
+  maximum lifetime the CAPTCHA image may reside on the filesystem. This is
+  typically longer than the session lifetime.  Garbage collection is run
+  periodically each time the CAPTCHA object is invoked, deleting all images
+  that have expired. Expiration values should be specified in <em>seconds</em>.</li>
+<li><code>setGcFreq($gcFreq)</code> and <code>getGcFreg()</code> allow you to specify how frequently
+  garbage collection should run. Garbage collection will run every <code>1/$gcFreq</code>
+  calls. The default is 100.</li>
+<li><code>setFont($font)</code> and <code>getFont()</code> allow you to specify the font you will use.
+  <code>$font</code> should be a fully qualified path to the font file. This value is
+  required; the CAPTCHA will throw an exception during generation if the font
+  file has not been specified.</li>
+<li><code>setFontSize($fsize)</code> and <code>getFontSize()</code> allow you to specify the font size
+  in pixels for generating the CAPTCHA. The default is 24px.</li>
+<li><code>setHeight($height)</code> and <code>getHeight()</code> allow you to specify the height in
+  pixels of the generated CAPTCHA image. The default is 50px.</li>
+<li><code>setWidth($width)</code> and <code>getWidth()</code> allow you to specify the width in pixels
+  of the generated CAPTCHA image. The default is 200px.</li>
+<li><code>setImgDir($imgDir)</code> and <code>getImgDir()</code> allow you to specify the directory for
+  storing CAPTCHA images. The default is <code>./images/captcha/</code>, relative to
+  the bootstrap script (typically <code>public/index.php</code>, resulting in
+  <code>public/images/captcha/</code>).</li>
+<li><code>setImgUrl($imgUrl)</code> and <code>getImgUrl()</code> allow you to specify the relative path
+  to a CAPTCHA image to use for HTML markup. The default is
+  <code>/images/captcha/</code>.</li>
+<li><code>setSuffix($suffix)</code> and <code>getSuffix()</code> allow you to specify the filename
+  suffix for the CAPTCHA image. The default is <code>.png</code>. Note: changing this
+  value will not change the type of the generated image.</li>
+<li><code>setDotNoiseLevel($level)</code> and <code>getDotNoiseLevel()</code>, along with
+  <code>setLineNoiseLevel($level)</code> and <code>getLineNoiseLevel()</code>, allow you to control
+  how much "noise" in the form of random dots and lines the image would contain.
+  Each unit of <code>$level</code> produces one random dot or line. The default is 100 dots
+  and 5 lines. The noise is added twice, both before and after the image
+  distortion transformation.</li>
+</ul>
+<p>All of the above options may be passed to the constructor by simply removing the
+'set' method prefix and casting the initial letter to lowercase: "suffix",
+"height", "imgUrl", etc.</p>
+<h2 id="laminas92captcha92recaptcha">Laminas\Captcha\ReCaptcha</h2>
+<p>The <code>Laminas\Captcha\ReCaptcha</code> adapter uses <a href="https://github.com/laminas/laminas-recaptcha"><code>Laminas\Service\ReCaptcha\ReCaptcha</code></a>
+to generate and validate CAPTCHAs.  It exposes the following methods:</p>
+<ul>
+<li><code>setSecretKey($key)</code> and <code>getSecretKey()</code> allow you to specify the secret key to
+  use for the ReCaptcha service. This must be specified during construction,
+  although it may be overridden at any point.</li>
+<li><code>setSiteKey($key)</code> and <code>getSiteKey()</code> allow you to specify the site key to use
+  with the ReCaptcha service. This must be specified during construction,
+  although it may be overridden at any point.</li>
+<li><code>setService(Laminas\ReCaptcha\ReCaptcha $service)</code> and <code>getService()</code>
+  allow you to set and get the ReCaptcha service object.</li>
+</ul>
+<p>When constructing <code>Laminas\Captcha\ReCaptcha</code>, you can use the same set of keys
+to the <code>$options</code> array as supported by <a href="https://github.com/laminas/laminas-recaptcha"><code>Laminas\Service\ReCaptcha\ReCaptcha</code></a>.</p>
+<h3>Updating from v2 to v3 of this adapter</h3>
+<p>As this adapter takes the same option keys as <a href="https://github.com/laminas/laminas-recaptcha"><code>Laminas\Service\ReCaptcha\ReCaptcha</code></a> which supports Recaptcha API v2, this
+component no longer supports the <code>ssl</code>, <code>xhtml</code> and <code>lang</code> keys in the <code>$options</code>
+array that is passed to the constructor.</p>
+<p>The options keys <code>pubKey</code> and <code>privKey</code> and the getters and setters for these
+keys are supported in this version, but are deprecated.</p>
+
+
+
+
+    <nav>
+    <ul class="page-nav hidden-print">
+
+        
+        <li class="page-nav__item">
+            
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../usage/">
+                    <i class="fa fa-chevron-left"></i> Previous
+                </a>
+            
+        </li>
+
+        
+        <li class="page-nav__item">
+            
+        </li>
+    </ul>
+</nav>
+
+
+
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/laminas/laminas-captcha/edit/master/docs/book/adapters.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
+                
+            </div>
+            <div class="col-md-3 col-sm-12 sidebar">
+                
+                    <div class="component-selector">
+    
+    <h5 class="component-selector__subtitle">Find documentation…</h5>
+    <select class="form-control component-selector__control">
+        <option value="/">Overview</option>
+        <optgroup label="Components"></optgroup>
+    </select>
+</div>
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="..">laminas-captcha</a>
+        </h4>
+
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
+
+        <ul class="subnavigation__list">
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href=".." class="subnavigation__link">laminas-captcha</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href="../intro/" class="subnavigation__link">Intro</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item ">
+                                <a href="../usage/" class="subnavigation__link">Usage</a>
+                            </li>
+                        
+                    
+                
+            
+
+                
+                
+
+                    
+                    
+                        
+                            <li class="subnavigation__list-item subnavigation__list-item--active">
+                                <a href="./" class="subnavigation__link">Adapters</a>
+                            </li>
+                        
+                    
+                
+            
+        </ul>
+    </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="footer">
+    <div class="container">
+
+        
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="footer__button" href="#page-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7 offset-md-2">
+                <h5>Laminas</h5>
+                <ul>
+                    <li>Laminas Project <a href="https://getlaminas.org/">Components and MVC for Enterprise Applications</a></li>
+                    <li>Mezzio <a href="https://docs.mezzio.dev/">PSR-15 Middleware in Minutes</a></li>
+                    <li>Laminas API Tools: <a href="https://api-tools.getlaminas.org/">Build RESTful APIs in minutes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            
+            <div class="col-md-4 offset-md-2">
+                <h4 class="footer__headline">Support</h4>
+                <ul class="support__list">
+                    <li class="support__list-item">
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://laminas.dev/chat" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://github.com/laminas" class="support__link" title="Github"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://twitter.com/getlaminas" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://getlaminas.org/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://getlaminas.org/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            
+            <div class="col-md-3">
+                <h4 class="footer__headline">License</h4>
+                <p>
+                    Code licensed under <a
+                        href="https://github.com/laminas/laminas-captcha//blob/master/LICENSE.md">BSD 3-Clause</a>.
+                </p>
+            </div>
+
+            
+            <div class="col-md-3">
+                <h4 class="footer__headline">Copyright</h4>
+                <p>
+                    <!--Built with love by the Laminas team with the help of our
+                    <a href="https://github.com/laminas/laminas-captcha//graphs/contributors">contributors</a>.<br>-->
+                    &copy; 2019-2019 by <a href="https://getlaminas.org/">The Laminas Project</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        let base_url = '..',
+            project  = "components",
+            siteName = 'laminas-captcha';
+    </script>
+    <script src="/js/scripts.js"></script>
+        <script src="../search/main.js"></script>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search in laminas-captcha" id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>
