@@ -1,22 +1,21 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Captcha;
+namespace LaminasTest\Captcha;
 
 use DirectoryIterator;
+use Laminas\Captcha\Exception\ImageNotLoadableException;
+use Laminas\Captcha\Exception\NoFontProvidedException;
+use Laminas\Captcha\Image as ImageCaptcha;
 use PHPUnit\Framework\TestCase;
-use Zend\Captcha\Image as ImageCaptcha;
-use Zend\Captcha\Exception\NoFontProvidedException;
-use Zend\Captcha\Exception\ImageNotLoadableException;
 
 /**
- * @group      Zend_Captcha
+ * @group      Laminas_Captcha
  */
 class ImageTest extends TestCase
 {
@@ -45,13 +44,13 @@ class ImageTest extends TestCase
             unset($this->word);
         }
 
-        $this->testDir = $this->getTmpDir() . '/ZF_test_images';
+        $this->testDir = $this->getTmpDir() . '/Laminas_test_images';
         if (! is_dir($this->testDir)) {
             @mkdir($this->testDir);
         }
 
         $this->captcha = new ImageCaptcha([
-            'sessionClass' => 'ZendTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
             'imgDir'       => $this->testDir,
             'font'         => __DIR__. '/_files/Vera.ttf',
         ]);
@@ -77,7 +76,7 @@ class ImageTest extends TestCase
      * Determine system TMP directory
      *
      * @return string
-     * @throws \Zend\File\Transfer\Exception\RuntimeException if unable to determine directory
+     * @throws \Laminas\File\Transfer\Exception\RuntimeException if unable to determine directory
      */
     protected function getTmpDir()
     {
@@ -126,19 +125,19 @@ class ImageTest extends TestCase
     }
 
     /**
-     * @group ZF-10006
+     * @group Laminas-10006
      */
     public function testCaptchaImageCleanupOnlyCaptchaFilesIdentifiedByTheirSuffix()
     {
-        if (! getenv('TESTS_ZEND_CAPTCHA_GC')) {
-            $this->markTestSkipped('Enable TESTS_ZEND_CAPTCHA_GC to run this test');
+        if (! getenv('TESTS_LAMINAS_CAPTCHA_GC')) {
+            $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_GC to run this test');
         }
         $this->captcha->generate();
         $filename = $this->testDir . "/" . $this->captcha->getId() . ".png";
         $this->assertFileExists($filename);
 
         //Create other cache file
-        $otherFile = $this->testDir . "/zf10006.cache";
+        $otherFile = $this->testDir . "/laminas10006.cache";
         file_put_contents($otherFile, '');
         $this->assertFileExists($otherFile);
         $this->captcha->setExpiration(1);
