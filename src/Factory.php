@@ -1,21 +1,19 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
+use Laminas\Stdlib\ArrayUtils;
 use Traversable;
-use Zend\Stdlib\ArrayUtils;
 
 /**
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  */
 abstract class Factory
 {
@@ -23,10 +21,10 @@ abstract class Factory
      * @var array Known captcha types
      */
     protected static $classMap = array(
-        'dumb'      => 'Zend\Captcha\Dumb',
-        'figlet'    => 'Zend\Captcha\Figlet',
-        'image'     => 'Zend\Captcha\Image',
-        'recaptcha' => 'Zend\Captcha\ReCaptcha',
+        'dumb'      => 'Laminas\Captcha\Dumb',
+        'figlet'    => 'Laminas\Captcha\Figlet',
+        'image'     => 'Laminas\Captcha\Image',
+        'recaptcha' => 'Laminas\Captcha\ReCaptcha',
     );
 
     /**
@@ -79,7 +77,7 @@ abstract class Factory
 
         if (!$captcha instanceof AdapterInterface) {
             throw new Exception\DomainException(sprintf(
-                '%s expects the "class" attribute to resolve to a valid Zend\Captcha\AdapterInterface instance; received "%s"',
+                '%s expects the "class" attribute to resolve to a valid Laminas\Captcha\AdapterInterface instance; received "%s"',
                 __METHOD__,
                 $class
             ));
