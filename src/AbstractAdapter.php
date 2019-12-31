@@ -1,25 +1,23 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
+use Laminas\Validator\AbstractValidator;
 use Traversable;
-use Zend\Validator\AbstractValidator;
 
 /**
  * Base class for Captcha adapters
  *
  * Provides some utility functionality to build on
  *
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage Adapter
  */
 abstract class AbstractAdapter extends AbstractValidator implements AdapterInterface
