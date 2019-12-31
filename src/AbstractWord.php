@@ -1,25 +1,23 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
-use Zend\Session\Container;
-use Zend\Math\Rand;
+use Laminas\Math\Rand;
+use Laminas\Session\Container;
 
 /**
  * AbstractWord-based captcha adapter
  *
  * Generates random word which user should recognise
  *
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage Adapter
  */
 abstract class AbstractWord extends AbstractAdapter
@@ -59,7 +57,7 @@ abstract class AbstractWord extends AbstractAdapter
      *
      * @var string
      */
-    protected $sessionClass = 'Zend\Session\Container';
+    protected $sessionClass = 'Laminas\Session\Container';
 
     /**
      * Should the numbers be used or only letters
@@ -252,7 +250,7 @@ abstract class AbstractWord extends AbstractAdapter
             if (!class_exists($this->sessionClass)) {
                 throw new Exception\InvalidArgumentException("Session class $this->sessionClass not found");
             }
-            $this->session = new $this->sessionClass('Zend_Form_Captcha_' . $id);
+            $this->session = new $this->sessionClass('Laminas_Form_Captcha_' . $id);
             $this->session->setExpirationHops(1, null, true);
             $this->session->setExpirationSeconds($this->getTimeout());
         }
@@ -358,7 +356,7 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Validate the word
      *
-     * @see    Zend\Validator\ValidatorInterface::isValid()
+     * @see    Laminas\Validator\ValidatorInterface::isValid()
      * @param  mixed $value
      * @param  mixed $context
      * @return bool

@@ -1,17 +1,15 @@
 <?php
+
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- * @package   Zend_Captcha
+ * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-captcha/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-captcha/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Captcha;
+namespace Laminas\Captcha;
 
+use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
 use Traversable;
-use ZendService\ReCaptcha\ReCaptcha as ReCaptchaService;
 
 /**
  * ReCaptcha adapter
@@ -20,8 +18,8 @@ use ZendService\ReCaptcha\ReCaptcha as ReCaptchaService;
  *
  * @see http://recaptcha.net/apidocs/captcha/
  *
- * @category   Zend
- * @package    Zend_Captcha
+ * @category   Laminas
+ * @package    Laminas_Captcha
  * @subpackage Adapter
  */
 class ReCaptcha extends AbstractAdapter
@@ -195,7 +193,7 @@ class ReCaptcha extends AbstractAdapter
     /**
      * Validate captcha
      *
-     * @see    \Zend\Validator\ValidatorInterface::isValid()
+     * @see    \Laminas\Validator\ValidatorInterface::isValid()
      * @param  mixed $value
      * @param  mixed $context
      * @return bool
