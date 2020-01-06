@@ -1,6 +1,6 @@
 # laminas-captcha
 
-[![Build Status](https://travis-ci.org/laminas/laminas-captcha.svg?branch=master)](https://travis-ci.org/laminas/laminas-captcha)
+[![Build Status](https://travis-ci.com/laminas/laminas-captcha.svg?branch=master)](https://travis-ci.com/laminas/laminas-captcha)
 [![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-captcha/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-captcha?branch=master)
 
 `Laminas\Captcha` component is able to manage “Completely Automated Public Turing
