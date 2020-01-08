@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="laminas-captcha">  
-    <link rel="canonical" href="https://docs.laminas.dev/usage/">
     <link rel="shortcut icon" href="/img/trademark-laminas-foundation-rgb.svg">
 
-    <title>Usage - laminas-captcha - Laminas Docs</title>
+    <title>laminas-captcha - Laminas Docs</title>
 
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -59,7 +58,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">laminas-captcha</a>
+            <a href="../.">laminas-captcha</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -87,8 +86,8 @@
                     
                     
                         
-                            <li class="subnavigation__list-item subnavigation__list-item--active">
-                                <a href="./" class="subnavigation__link">Usage</a>
+                            <li class="subnavigation__list-item ">
+                                <a href="../usage/" class="subnavigation__link">Usage</a>
                             </li>
                         
                     
@@ -167,121 +166,21 @@
         <div class="row">
             <div class="col-md-2 col-sm-12">
                 
-    
-
-    
-    
-
             </div>
             <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
                 
-                    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        
-            <li class="breadcrumb-item"><a href="">Overview</a></li>
 
-            
-                <li class="breadcrumb-item"><a href="..">laminas-captcha</a></li>
-
-                
-
-                <li class="breadcrumb-item active" aria-current="page">Usage</li>
-            
-        
-    </ol>
-</nav>
-
-
-
-
-
-
-    
-    
-
-    <h1 id="usage">Usage</h1>
-<p>A basic use case resembles the following:</p>
-<pre class=codehilite><code class=language-php>// Originating request:
-$captcha = new Laminas\Captcha\Figlet([
-    'name'    =&gt; 'foo',
-    'wordLen' =&gt; 6,
-    'timeout' =&gt; 300,
-]);
-
-$id = $captcha-&gt;generate();
-
-// This will output a Figlet string:
-echo $captcha-&gt;getFiglet()-&gt;render($captcha-&gt;getWord());
-
-// On a subsequent request:
-// Assume a captcha setup as before, with corresponding form fields, the value
-// of $_POST['foo'] would be a key/value array containing:
-// - id =&gt; captcha ID
-// - input =&gt; captcha value
-if ($captcha-&gt;isValid($_POST['foo'], $_POST)) {
-    // Validated!
-}</code></pre>
-<p>The above example demonstrates usage of a FIGlet string for the CAPTCHA.
-laminas-captcha also provides adapters for:</p>
-<ul>
-<li>Images</li>
-<li><a href="https://www.google.com/recaptcha/intro/index.html">reCAPTCHA</a></li>
-</ul>
-<p>and an interface allowing you to define and implement your own solutions.</p>
-<p>The options required will vary based on the adapter you use, but in all cases,
-you will use the combination of:</p>
-<ul>
-<li><code>generate()</code></li>
-<li>some mechanism of the adapter to render the CAPTCHA</li>
-<li><code>isValid()</code> to validate a submitted CAPTCHA solution</li>
-</ul>
+<h1 class="content__title">404</h1>
 <blockquote>
-<h3>laminas-form integration</h3>
-<p><a href="https://github.com/laminas/laminas-form">laminas-form</a> contains integration
-with laminas-captcha via the class <code>Laminas\Form\Element\Captcha</code>; read the
-<a href="https://docs.laminas.dev/laminas-form/element/captcha/">documentation on the CAPTCHA form element</a>
-for more details.</p>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
 </blockquote>
 
+<a href="../." class="btn btn-default" role="button">Go to homepage</a>
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../intro/">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../adapters/">
-                    Next <i class="fa fa-chevron-right"></i>
-                </a>
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/laminas/laminas-captcha/edit/master/docs/book/usage.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             </div>
             <div class="col-md-3 col-sm-12 sidebar">
                 
@@ -296,7 +195,7 @@ for more details.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">laminas-captcha</a>
+            <a href="../.">laminas-captcha</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -324,8 +223,8 @@ for more details.</p>
                     
                     
                         
-                            <li class="subnavigation__list-item subnavigation__list-item--active">
-                                <a href="./" class="subnavigation__link">Usage</a>
+                            <li class="subnavigation__list-item ">
+                                <a href="../usage/" class="subnavigation__link">Usage</a>
                             </li>
                         
                     
