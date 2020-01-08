@@ -10,4 +10,3 @@ site_description: laminas-captcha
 repo_url: 'https://github.com/laminas/laminas-captcha'
 extra:
     project: Components
-    project_url: 'https://docs.laminas.dev'
