@@ -294,7 +294,7 @@
 <code>Laminas\Captcha\AdapterInterface</code>, and provides several implementations.</p>
 <h2 id="the-adapterinterface">The AdapterInterface</h2>
 <p>All CAPTCHA adapters implement <code>Laminas\Captcha\AdapterInterface</code>:</p>
-<pre class=codehilite><code class=language-php>namespace Laminas\Captcha;
+<pre class="highlight"><code class="language-php">namespace Laminas\Captcha;
 
 use Laminas\Validator\ValidatorInterface;
 
@@ -309,6 +309,7 @@ interface AdapterInterface extends ValidatorInterface
     // Get helper name used for rendering this CAPTCHA type
     public function getHelperName();
 }</code></pre>
+
 <p>The <code>name</code> setter and getter are used to specify and retrieve the CAPTCHA identifier.</p>
 <p>The most interesting method is <code>generate()</code>, which is used to create the CAPTCHA
 token. This process typically will store the token in the session so that you

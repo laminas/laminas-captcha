@@ -260,7 +260,7 @@
 
     <h1 id="usage">Usage</h1>
 <p>A basic use case resembles the following:</p>
-<pre class=codehilite><code class=language-php>// Originating request:
+<pre class="highlight"><code class="language-php">// Originating request:
 $captcha = new Laminas\Captcha\Figlet([
     'name'    =&gt; 'foo',
     'wordLen' =&gt; 6,
@@ -280,6 +280,7 @@ echo $captcha-&gt;getFiglet()-&gt;render($captcha-&gt;getWord());
 if ($captcha-&gt;isValid($_POST['foo'], $_POST)) {
     // Validated!
 }</code></pre>
+
 <p>The above example demonstrates usage of a FIGlet string for the CAPTCHA.
 laminas-captcha also provides adapters for:</p>
 <ul>
