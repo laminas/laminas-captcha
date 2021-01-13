@@ -27,7 +27,7 @@
         "laminas/laminas-zendframework-bridge": "^1.1"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "^2.1.1",
+        "laminas/laminas-coding-standard": "~1.0.0",
         "laminas/laminas-recaptcha": "^3.0",
         "laminas/laminas-session": "^2.10",
         "laminas/laminas-text": "^2.8",
