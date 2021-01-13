@@ -148,6 +148,9 @@ class FigletTest extends CommonWordTest
         $this->assertEquals($options, $test);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testShouldAllowFigletsLargerThanFourteenCharacters()
     {
         $this->captcha->setName('foo')

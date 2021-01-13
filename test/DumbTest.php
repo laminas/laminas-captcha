@@ -64,7 +64,7 @@ class DumbTest extends CommonWordTest
         $this->captcha->setUseNumbers(false);
         $this->captcha->generate();
         $word = $this->captcha->getWord();
-        $this->assertNotRegexp('/\d/', $word);
+        $this->assertDoesNotMatchRegularExpression('/\d/', $word);
     }
 
     public function testWordIsExactlyAsLongAsWordLen()

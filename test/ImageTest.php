@@ -126,7 +126,7 @@ class ImageTest extends TestCase
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFileNotExists($filename, "File $filename was found even after GC");
+        $this->assertFileDoesNotExist($filename, "File $filename was found even after GC");
     }
 
     /**
@@ -150,7 +150,7 @@ class ImageTest extends TestCase
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFileNotExists($filename, "File $filename was found even after GC");
+        $this->assertFileDoesNotExist($filename, "File $filename was found even after GC");
         $this->assertFileExists($otherFile, "File $otherFile was not found after GC");
     }
 
