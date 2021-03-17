@@ -20,12 +20,17 @@ class FigletTest extends CommonWordTest
     protected $wordClass = 'Laminas\Captcha\Figlet';
 
     /**
+     * @var FigletCaptcha
+     */
+    protected $captcha;
+
+    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         if (isset($this->word)) {
             unset($this->word);
@@ -40,7 +45,7 @@ class FigletTest extends CommonWordTest
     {
         $ttl = $this->captcha->getTimeout();
         $this->assertNotEmpty($ttl);
-        $this->assertInternalType('integer', $ttl);
+        $this->assertIsInt($ttl);
     }
 
     public function testCanSetTimeout()
@@ -55,7 +60,7 @@ class FigletTest extends CommonWordTest
     {
         $id = $this->captcha->generate();
         $this->assertNotEmpty($id);
-        $this->assertInternalType('string', $id);
+        $this->assertIsString($id);
         $this->id = $id;
     }
 
@@ -64,7 +69,7 @@ class FigletTest extends CommonWordTest
         $this->captcha->generate();
         $word = $this->captcha->getWord();
         $this->assertNotEmpty($word);
-        $this->assertInternalType('string', $word);
+        $this->assertIsString($word);
         $this->assertEquals(8, strlen($word));
         $this->word = $word;
     }
@@ -74,7 +79,7 @@ class FigletTest extends CommonWordTest
         $this->captcha->setWordLen(4);
         $this->captcha->generate();
         $word = $this->captcha->getWord();
-        $this->assertInternalType('string', $word);
+        $this->assertIsString($word);
         $this->assertEquals(4, strlen($word));
         $this->word = $word;
     }
@@ -143,11 +148,14 @@ class FigletTest extends CommonWordTest
         $this->assertEquals($options, $test);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testShouldAllowFigletsLargerThanFourteenCharacters()
     {
         $this->captcha->setName('foo')
                       ->setWordLen(14);
-        $id = $this->captcha->generate();
+        $this->captcha->generate();
     }
 
     public function testShouldNotValidateEmptyInputAgainstEmptySession()

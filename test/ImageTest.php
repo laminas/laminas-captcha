@@ -20,6 +20,12 @@ use PHPUnit\Framework\TestCase;
 class ImageTest extends TestCase
 {
     protected $tmpDir;
+    protected $testDir;
+
+    /**
+     * @var ImageCaptcha
+     */
+    protected $captcha;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -27,11 +33,10 @@ class ImageTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         if (! extension_loaded('gd')) {
             $this->markTestSkipped('The GD extension is not available.');
-            return;
         }
         if (! function_exists("imagepng")) {
             $this->markTestSkipped("Image CAPTCHA requires PNG support");
@@ -62,9 +67,9 @@ class ImageTest extends TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
-        // remove chaptcha images
+        // remove captcha images
         foreach (new DirectoryIterator($this->testDir) as $file) {
             if (! $file->isDot() && ! $file->isDir()) {
                 unlink($file->getPathname());
@@ -121,7 +126,7 @@ class ImageTest extends TestCase
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFileNotExists($filename, "File $filename was found even after GC");
+        $this->assertFileDoesNotExist($filename, "File $filename was found even after GC");
     }
 
     /**
@@ -145,7 +150,7 @@ class ImageTest extends TestCase
         sleep(2);
         $this->captcha->generate();
         clearstatcache();
-        $this->assertFileNotExists($filename, "File $filename was found even after GC");
+        $this->assertFileDoesNotExist($filename, "File $filename was found even after GC");
         $this->assertFileExists($otherFile, "File $otherFile was not found after GC");
     }
 
@@ -153,7 +158,7 @@ class ImageTest extends TestCase
     {
         $id = $this->captcha->generate();
         $this->assertNotEmpty($id);
-        $this->assertInternalType('string', $id);
+        $this->assertIsString($id);
         $this->id = $id;
     }
 
@@ -162,7 +167,7 @@ class ImageTest extends TestCase
         $this->captcha->generate();
         $word = $this->captcha->getWord();
         $this->assertNotEmpty($word);
-        $this->assertInternalType('string', $word);
+        $this->assertIsString($word);
         $this->assertEquals(8, strlen($word));
         $this->word = $word;
     }
@@ -172,7 +177,7 @@ class ImageTest extends TestCase
         $this->captcha->setWordLen(4);
         $this->captcha->generate();
         $word = $this->captcha->getWord();
-        $this->assertInternalType('string', $word);
+        $this->assertIsString($word);
         $this->assertEquals(4, strlen($word));
         $this->word = $word;
     }

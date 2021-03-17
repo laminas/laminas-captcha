@@ -18,12 +18,17 @@ class DumbTest extends CommonWordTest
     protected $wordClass = 'Laminas\Captcha\Dumb';
 
     /**
+     * @var DumbCaptcha
+     */
+    protected $captcha;
+
+    /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         if (isset($this->word)) {
             unset($this->word);
@@ -59,7 +64,7 @@ class DumbTest extends CommonWordTest
         $this->captcha->setUseNumbers(false);
         $this->captcha->generate();
         $word = $this->captcha->getWord();
-        $this->assertNotRegexp('/\d/', $word);
+        $this->assertDoesNotMatchRegularExpression('/\d/', $word);
     }
 
     public function testWordIsExactlyAsLongAsWordLen()

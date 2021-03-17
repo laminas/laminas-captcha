@@ -23,7 +23,7 @@ class FactoryTest extends TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         // remove captcha images
         if (null !== $this->testDir) {
@@ -53,7 +53,6 @@ class FactoryTest extends TestCase
     {
         if (! extension_loaded('gd')) {
             $this->markTestSkipped('The GD extension is not available.');
-            return;
         }
         if (! function_exists("imagepng")) {
             $this->markTestSkipped("Image CAPTCHA requires PNG support");
