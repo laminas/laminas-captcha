@@ -10,18 +10,33 @@ namespace LaminasTest\Captcha;
 
 use DirectoryIterator;
 use Laminas\Captcha;
+use Laminas\Captcha\Dumb;
+use Laminas\Captcha\Figlet;
+use Laminas\Captcha\Image;
+use Laminas\Captcha\ReCaptcha;
+use LaminasTest\Captcha\TestAsset\MockCaptcha;
+use LaminasTest\Captcha\TestAsset\SessionContainer;
 use PHPUnit\Framework\TestCase;
+
+use function extension_loaded;
+use function function_exists;
+use function getenv;
+use function is_dir;
+use function mkdir;
+use function sys_get_temp_dir;
+use function unlink;
 
 class FactoryTest extends TestCase
 {
+    /** @var string */
     protected $testDir;
+
+    /** @var string */
     protected $tmpDir;
 
     /**
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
-     *
-     * @return void
      */
     public function tearDown(): void
     {
@@ -39,7 +54,6 @@ class FactoryTest extends TestCase
      * Determine system TMP directory
      *
      * @return string
-     * @throws Laminas_File_Transfer_Exception if unable to determine directory
      */
     protected function getTmpDir()
     {
@@ -70,73 +84,73 @@ class FactoryTest extends TestCase
     public function testCanCreateDumbCaptcha()
     {
         $captcha = Captcha\Factory::factory([
-            'class' => 'Laminas\Captcha\Dumb',
+            'class'   => Dumb::class,
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Dumb', $captcha);
+        $this->assertInstanceOf(Dumb::class, $captcha);
     }
 
     public function testCanCreateDumbCaptchaUsingShortName()
     {
         $captcha = Captcha\Factory::factory([
-            'class' => 'dumb',
+            'class'   => 'dumb',
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Dumb', $captcha);
+        $this->assertInstanceOf(Dumb::class, $captcha);
     }
 
     public function testCanCreateFigletCaptcha()
     {
         $captcha = Captcha\Factory::factory([
-            'class' => 'Laminas\Captcha\Figlet',
+            'class'   => Figlet::class,
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Figlet', $captcha);
+        $this->assertInstanceOf(Figlet::class, $captcha);
     }
 
     public function testCanCreateFigletCaptchaUsingShortName()
     {
         $captcha = Captcha\Factory::factory([
-            'class' => 'figlet',
+            'class'   => 'figlet',
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Figlet', $captcha);
+        $this->assertInstanceOf(Figlet::class, $captcha);
     }
 
     public function testCanCreateImageCaptcha()
     {
         $this->setUpImageTest();
         $captcha = Captcha\Factory::factory([
-            'class' => 'Laminas\Captcha\Image',
+            'class'   => Image::class,
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
                 'imgDir'       => $this->testDir,
-                'font'         => __DIR__. '/../Pdf/_fonts/Vera.ttf',
+                'font'         => __DIR__ . '/../Pdf/_fonts/Vera.ttf',
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Image', $captcha);
+        $this->assertInstanceOf(Image::class, $captcha);
     }
 
     public function testCanCreateImageCaptchaUsingShortName()
     {
         $this->setUpImageTest();
         $captcha = Captcha\Factory::factory([
-            'class' => 'image',
+            'class'   => 'image',
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
                 'imgDir'       => $this->testDir,
-                'font'         => __DIR__. '/../Pdf/_fonts/Vera.ttf',
+                'font'         => __DIR__ . '/../Pdf/_fonts/Vera.ttf',
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\Image', $captcha);
+        $this->assertInstanceOf(Image::class, $captcha);
     }
 
     public function testCanCreateReCaptcha()
@@ -146,12 +160,12 @@ class FactoryTest extends TestCase
         }
 
         $captcha = Captcha\Factory::factory([
-            'class' => 'Laminas\Captcha\ReCaptcha',
+            'class'   => ReCaptcha::class,
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\ReCaptcha', $captcha);
+        $this->assertInstanceOf(ReCaptcha::class, $captcha);
     }
 
     public function testCanCreateReCaptchaUsingShortName()
@@ -161,18 +175,18 @@ class FactoryTest extends TestCase
         }
 
         $captcha = Captcha\Factory::factory([
-            'class' => 'recaptcha',
+            'class'   => 'recaptcha',
             'options' => [
-                'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+                'sessionClass' => SessionContainer::class,
             ],
         ]);
-        $this->assertInstanceOf('Laminas\Captcha\ReCaptcha', $captcha);
+        $this->assertInstanceOf(ReCaptcha::class, $captcha);
     }
 
     public function testOptionsArePassedToCaptchaAdapter()
     {
         $captcha = Captcha\Factory::factory([
-            'class'   => 'LaminasTest\Captcha\TestAsset\MockCaptcha',
+            'class'   => MockCaptcha::class,
             'options' => [
                 'foo' => 'bar',
             ],

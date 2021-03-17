@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCaps
 
 /**
  * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
@@ -10,6 +10,33 @@ namespace Laminas\Captcha;
 
 use DirectoryIterator;
 use Laminas\Stdlib\ErrorHandler;
+use Traversable;
+
+use function extension_loaded;
+use function file_exists;
+use function floor;
+use function function_exists;
+use function imagecolorallocate;
+use function imagecolorat;
+use function imagecreatefrompng;
+use function imagecreatetruecolor;
+use function imagedestroy;
+use function imagefilledellipse;
+use function imagefilledrectangle;
+use function imageftbbox;
+use function imagefttext;
+use function imageline;
+use function imagepng;
+use function imagesetpixel;
+use function imagesx;
+use function imagesy;
+use function mt_rand;
+use function rtrim;
+use function sin;
+use function strlen;
+use function substr;
+use function time;
+use function unlink;
 
 /**
  * Image-based captcha element
@@ -115,7 +142,7 @@ class Image extends AbstractWord
     /**
      * Constructor
      *
-     * @param  array|\Traversable $options
+     * @param array|Traversable $options
      * @throws Exception\ExtensionNotLoadedException
      */
     public function __construct($options = null)
@@ -453,7 +480,7 @@ class Image extends AbstractWord
         }
         $this->generateImage($id, $this->getWord());
 
-        if (mt_rand(1, $this->getGcFreq()) == 1) {
+        if (mt_rand(1, $this->getGcFreq()) === 1) {
             $this->gc();
         }
 
@@ -468,8 +495,8 @@ class Image extends AbstractWord
      *
      * @param string $id Captcha ID
      * @param string $word Captcha word
-     * @throws Exception\NoFontProvidedException if no font was set
-     * @throws Exception\ImageNotLoadableException if start image cannot be loaded
+     * @throws Exception\NoFontProvidedException If no font was set.
+     * @throws Exception\ImageNotLoadableException If start image cannot be loaded.
      */
     protected function generateImage($id, $word)
     {
@@ -483,7 +510,7 @@ class Image extends AbstractWord
         $h     = $this->getHeight();
         $fsize = $this->getFontSize();
 
-        $imgFile   = $this->getImgDir() . $id . $this->getSuffix();
+        $imgFile = $this->getImgDir() . $id . $this->getSuffix();
 
         if (empty($this->startImage)) {
             $img = imagecreatetruecolor($w, $h);
@@ -507,8 +534,8 @@ class Image extends AbstractWord
         $bgColor   = imagecolorallocate($img, 255, 255, 255);
         imagefilledrectangle($img, 0, 0, $w - 1, $h - 1, $bgColor);
         $textbox = imageftbbox($fsize, 0, $font, $word);
-        $x = ($w - ($textbox[2] - $textbox[0])) / 2;
-        $y = ($h - ($textbox[7] - $textbox[1])) / 2;
+        $x       = ($w - ($textbox[2] - $textbox[0])) / 2;
+        $y       = ($h - ($textbox[7] - $textbox[1])) / 2;
         imagefttext($img, $fsize, 0, $x, $y, $textColor, $font, $word);
 
         // generate noise
@@ -520,7 +547,7 @@ class Image extends AbstractWord
         }
 
         // transformed image
-        $img2     = imagecreatetruecolor($w, $h);
+        $img2    = imagecreatetruecolor($w, $h);
         $bgColor = imagecolorallocate($img2, 255, 255, 255);
         imagefilledrectangle($img2, 0, 0, $w - 1, $h - 1, $bgColor);
 
@@ -552,10 +579,10 @@ class Image extends AbstractWord
                     $colorXY = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
                 }
 
-                if ($color == 255 && $colorX == 255 && $colorY == 255 && $colorXY == 255) {
+                if ($color === 255 && $colorX === 255 && $colorY === 255 && $colorXY === 255) {
                     // ignore background
                     continue;
-                } elseif ($color == 0 && $colorX == 0 && $colorY == 0 && $colorXY == 0) {
+                } elseif ($color === 0 && $colorX === 0 && $colorY === 0 && $colorXY === 0) {
                     // transfer inside of the image as-is
                     $newcolor = 0;
                 } else {
@@ -591,7 +618,6 @@ class Image extends AbstractWord
 
     /**
      * Remove old files from image directory
-     *
      */
     protected function gc()
     {
@@ -607,7 +633,7 @@ class Image extends AbstractWord
             if (! $file->isDot() && ! $file->isDir()) {
                 if (file_exists($file->getPathname()) && $file->getMTime() < $expire) {
                     // only deletes files ending with $this->suffix
-                    if (substr($file->getFilename(), -($suffixLength)) == $this->suffix) {
+                    if (substr($file->getFilename(), -$suffixLength) === $this->suffix) {
                         ErrorHandler::start();
                         unlink($file->getPathname());
                         ErrorHandler::stop();

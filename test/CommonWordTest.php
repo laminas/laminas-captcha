@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.AbstractClass.Prefix
 
 /**
  * @see       https://github.com/laminas/laminas-captcha for the canonical source repository
@@ -28,7 +28,7 @@ abstract class CommonWordTest extends TestCase
      */
     public function testLoadInvalidSessionClass()
     {
-        $wordAdapter = new $this->wordClass;
+        $wordAdapter = new $this->wordClass();
         $wordAdapter->setSessionClass('LaminasTest\Captcha\InvalidClassName');
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('not found');
@@ -37,7 +37,7 @@ abstract class CommonWordTest extends TestCase
 
     public function testErrorMessages()
     {
-        $wordAdapter = new $this->wordClass;
+        $wordAdapter = new $this->wordClass();
         $this->assertFalse($wordAdapter->isValid('foo'));
         $messages = $wordAdapter->getMessages();
         $this->assertNotEmpty($messages);

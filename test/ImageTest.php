@@ -12,26 +12,39 @@ use DirectoryIterator;
 use Laminas\Captcha\Exception\ImageNotLoadableException;
 use Laminas\Captcha\Exception\NoFontProvidedException;
 use Laminas\Captcha\Image as ImageCaptcha;
+use Laminas\File\Transfer\Exception\RuntimeException;
+use LaminasTest\Captcha\TestAsset\SessionContainer;
 use PHPUnit\Framework\TestCase;
+
+use function clearstatcache;
+use function extension_loaded;
+use function file_put_contents;
+use function function_exists;
+use function getenv;
+use function is_dir;
+use function mkdir;
+use function sleep;
+use function strlen;
+use function sys_get_temp_dir;
+use function unlink;
 
 /**
  * @group      Laminas_Captcha
  */
 class ImageTest extends TestCase
 {
+    /** @var string */
     protected $tmpDir;
+
+    /** @var string */
     protected $testDir;
 
-    /**
-     * @var ImageCaptcha
-     */
+    /** @var ImageCaptcha */
     protected $captcha;
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -55,17 +68,15 @@ class ImageTest extends TestCase
         }
 
         $this->captcha = new ImageCaptcha([
-            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => SessionContainer::class,
             'imgDir'       => $this->testDir,
-            'font'         => __DIR__. '/_files/Vera.ttf',
+            'font'         => __DIR__ . '/_files/Vera.ttf',
         ]);
     }
 
     /**
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
-     *
-     * @return void
      */
     public function tearDown(): void
     {
@@ -81,7 +92,7 @@ class ImageTest extends TestCase
      * Determine system TMP directory
      *
      * @return string
-     * @throws \Laminas\File\Transfer\Exception\RuntimeException if unable to determine directory
+     * @throws RuntimeException If unable to determine directory.
      */
     protected function getTmpDir()
     {
@@ -237,7 +248,7 @@ class ImageTest extends TestCase
     {
         $this->expectException(ImageNotLoadableException::class);
         $captcha = new ImageCaptcha([
-            'font'       => __DIR__. '/../Pdf/_fonts/Vera.ttf',
+            'font'       => __DIR__ . '/../Pdf/_fonts/Vera.ttf',
             'startImage' => 'file_not_found.png',
         ]);
         $captcha->generate();

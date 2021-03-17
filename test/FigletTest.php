@@ -12,23 +12,23 @@ use ArrayObject;
 use Laminas\Captcha\Figlet as FigletCaptcha;
 use Laminas\Session\Container as SessionContainer;
 
+use function headers_sent;
+use function strlen;
+
 /**
  * @group      Laminas_Captcha
  */
 class FigletTest extends CommonWordTest
 {
-    protected $wordClass = 'Laminas\Captcha\Figlet';
+    /** @var string */
+    protected $wordClass = FigletCaptcha::class;
 
-    /**
-     * @var FigletCaptcha
-     */
+    /** @var FigletCaptcha */
     protected $captcha;
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -37,7 +37,7 @@ class FigletTest extends CommonWordTest
         }
 
         $this->captcha = new FigletCaptcha([
-            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer'
+            'sessionClass' => \LaminasTest\Captcha\TestAsset\SessionContainer::class,
         ]);
     }
 
@@ -86,9 +86,9 @@ class FigletTest extends CommonWordTest
 
     public function testGenerateIsRandomised()
     {
-        $id1 = $this->captcha->generate();
+        $id1   = $this->captcha->generate();
         $word1 = $this->captcha->getWord();
-        $id2 = $this->captcha->generate();
+        $id2   = $this->captcha->generate();
         $word2 = $this->captcha->getWord();
 
         $this->assertNotEmpty($id1);
@@ -109,7 +109,7 @@ class FigletTest extends CommonWordTest
     public function testWordValidates()
     {
         $this->captcha->generate();
-        $input = ['id' => $this->captcha->getId() , 'input' => $this->captcha->getWord()];
+        $input = ['id' => $this->captcha->getId(), 'input' => $this->captcha->getWord()];
         $this->assertTrue($this->captcha->isValid($input));
     }
 
@@ -138,13 +138,13 @@ class FigletTest extends CommonWordTest
     {
         $options = [
             'name'         => 'foo',
-            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => \LaminasTest\Captcha\TestAsset\SessionContainer::class,
             'wordLen'      => 6,
             'timeout'      => 300,
         ];
         $config  = new ArrayObject($options);
         $captcha = new FigletCaptcha($config);
-        $test = $captcha->getOptions();
+        $test    = $captcha->getOptions();
         $this->assertEquals($options, $test);
     }
 

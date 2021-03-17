@@ -11,6 +11,13 @@ namespace Laminas\Captcha;
 use Laminas\Validator\AbstractValidator;
 use Traversable;
 
+use function in_array;
+use function is_array;
+use function method_exists;
+use function property_exists;
+use function strtolower;
+use function ucfirst;
+
 /**
  * Base class for Captcha adapters
  *
@@ -36,6 +43,7 @@ abstract class AbstractAdapter extends AbstractValidator implements AdapterInter
 
     /**
      * Options to skip when processing options
+     *
      * @var array
      */
     protected $skipOptions = [
@@ -85,7 +93,7 @@ abstract class AbstractAdapter extends AbstractValidator implements AdapterInter
             $this->options[$key] = $value;
         } elseif (property_exists($this, $key)) {
             // Assume it's metadata
-            $this->$key = $value;
+            $this->$key          = $value;
             $this->options[$key] = $value;
         }
         return $this;
