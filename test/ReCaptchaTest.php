@@ -32,7 +32,7 @@ class ReCaptchaTest extends TestCase
         }
     }
 
-    public function testConstructorShouldSetOptions()
+    public function testConstructorShouldSetOptions(): void
     {
         $options = [
             'secret_key'       => 'secretKey',
@@ -71,7 +71,7 @@ class ReCaptchaTest extends TestCase
         $this->assertEquals($compare, $test);
     }
 
-    public function testShouldAllowSpecifyingServiceObject()
+    public function testShouldAllowSpecifyingServiceObject(): void
     {
         $captcha = new ReCaptcha();
         $try     = new ReCaptchaService();
@@ -80,7 +80,7 @@ class ReCaptchaTest extends TestCase
         $this->assertSame($captcha->getService(), $try);
     }
 
-    public function testSetAndGetSiteAndSecretKeys()
+    public function testSetAndGetSiteAndSecretKeys(): void
     {
         $captcha   = new ReCaptcha();
         $siteKey   = 'siteKey';
@@ -95,7 +95,7 @@ class ReCaptchaTest extends TestCase
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
-    public function testSetAndGetSiteAndSecretKeysViaBCMethods()
+    public function testSetAndGetSiteAndSecretKeysViaBCMethods(): void
     {
         $captcha   = new ReCaptcha();
         $siteKey   = 'siteKey';
@@ -110,7 +110,7 @@ class ReCaptchaTest extends TestCase
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
-    public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptions()
+    public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptions(): void
     {
         $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
@@ -123,7 +123,7 @@ class ReCaptchaTest extends TestCase
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
-    public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptionsWithBCNames()
+    public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptionsWithBCNames(): void
     {
         $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
@@ -136,29 +136,33 @@ class ReCaptchaTest extends TestCase
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
-    /** @group Laminas-7654 */
-    public function testConstructorShouldAllowSettingThemeOptionOnServiceObject()
+    /**
+     * @group Laminas-7654
+     */
+    public function testConstructorShouldAllowSettingThemeOptionOnServiceObject(): void
     {
         $options = ['theme' => 'dark'];
         $captcha = new ReCaptcha($options);
         $this->assertEquals('dark', $captcha->getService()->getOption('theme'));
     }
 
-    /** @group Laminas-7654 */
-    public function testAllowsSettingThemeOptionOnServiceObject()
+    /**
+     * @group Laminas-7654
+     */
+    public function testAllowsSettingThemeOptionOnServiceObject(): void
     {
         $captcha = new ReCaptcha();
         $captcha->setOption('theme', 'dark');
         $this->assertEquals('dark', $captcha->getService()->getOption('theme'));
     }
 
-    public function testUsesReCaptchaHelper()
+    public function testUsesReCaptchaHelper(): void
     {
         $captcha = new ReCaptcha();
         $this->assertEquals('captcha/recaptcha', $captcha->getHelperName());
     }
 
-    public function testValidationForDifferentElementName()
+    public function testValidationForDifferentElementName(): void
     {
         $captcha = new ReCaptcha([
             'site_key'   => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
@@ -175,7 +179,7 @@ class ReCaptchaTest extends TestCase
         $this->assertTrue($captcha->isValid($value, $context));
     }
 
-    public function testValidationForResponseElementName()
+    public function testValidationForResponseElementName(): void
     {
         $captcha = new ReCaptcha([
             'site_key'   => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),

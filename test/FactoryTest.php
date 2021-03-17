@@ -63,7 +63,7 @@ class FactoryTest extends TestCase
         return $this->tmpDir;
     }
 
-    public function setUpImageTest()
+    public function setUpImageTest(): void
     {
         if (! extension_loaded('gd')) {
             $this->markTestSkipped('The GD extension is not available.');
@@ -81,7 +81,7 @@ class FactoryTest extends TestCase
         }
     }
 
-    public function testCanCreateDumbCaptcha()
+    public function testCanCreateDumbCaptcha(): void
     {
         $captcha = Captcha\Factory::factory([
             'class'   => Dumb::class,
@@ -92,7 +92,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Dumb::class, $captcha);
     }
 
-    public function testCanCreateDumbCaptchaUsingShortName()
+    public function testCanCreateDumbCaptchaUsingShortName(): void
     {
         $captcha = Captcha\Factory::factory([
             'class'   => 'dumb',
@@ -103,7 +103,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Dumb::class, $captcha);
     }
 
-    public function testCanCreateFigletCaptcha()
+    public function testCanCreateFigletCaptcha(): void
     {
         $captcha = Captcha\Factory::factory([
             'class'   => Figlet::class,
@@ -114,7 +114,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Figlet::class, $captcha);
     }
 
-    public function testCanCreateFigletCaptchaUsingShortName()
+    public function testCanCreateFigletCaptchaUsingShortName(): void
     {
         $captcha = Captcha\Factory::factory([
             'class'   => 'figlet',
@@ -125,7 +125,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Figlet::class, $captcha);
     }
 
-    public function testCanCreateImageCaptcha()
+    public function testCanCreateImageCaptcha(): void
     {
         $this->setUpImageTest();
         $captcha = Captcha\Factory::factory([
@@ -139,7 +139,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Image::class, $captcha);
     }
 
-    public function testCanCreateImageCaptchaUsingShortName()
+    public function testCanCreateImageCaptchaUsingShortName(): void
     {
         $this->setUpImageTest();
         $captcha = Captcha\Factory::factory([
@@ -153,7 +153,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(Image::class, $captcha);
     }
 
-    public function testCanCreateReCaptcha()
+    public function testCanCreateReCaptcha(): void
     {
         if (! getenv('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
@@ -168,7 +168,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(ReCaptcha::class, $captcha);
     }
 
-    public function testCanCreateReCaptchaUsingShortName()
+    public function testCanCreateReCaptchaUsingShortName(): void
     {
         if (! getenv('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT to test PDF render');
@@ -183,7 +183,7 @@ class FactoryTest extends TestCase
         $this->assertInstanceOf(ReCaptcha::class, $captcha);
     }
 
-    public function testOptionsArePassedToCaptchaAdapter()
+    public function testOptionsArePassedToCaptchaAdapter(): void
     {
         $captcha = Captcha\Factory::factory([
             'class'   => MockCaptcha::class,

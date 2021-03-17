@@ -39,19 +39,19 @@ class DumbTest extends CommonWordTest
         ]);
     }
 
-    public function testUsesCaptchaDumbAsHelper()
+    public function testUsesCaptchaDumbAsHelper(): void
     {
         $this->assertEquals('captcha/dumb', $this->captcha->getHelperName());
     }
 
-    public function testGeneratePopulatesId()
+    public function testGeneratePopulatesId(): void
     {
         $id   = $this->captcha->generate();
         $test = $this->captcha->getId();
         $this->assertEquals($id, $test);
     }
 
-    public function testGeneratePopulatesSessionWithWord()
+    public function testGeneratePopulatesSessionWithWord(): void
     {
         $this->captcha->generate();
         $word    = $this->captcha->getWord();
@@ -59,7 +59,7 @@ class DumbTest extends CommonWordTest
         $this->assertEquals($word, $session->word);
     }
 
-    public function testGenerateWillNotUseNumbersIfUseNumbersIsDisabled()
+    public function testGenerateWillNotUseNumbersIfUseNumbersIsDisabled(): void
     {
         $this->captcha->setUseNumbers(false);
         $this->captcha->generate();
@@ -67,7 +67,7 @@ class DumbTest extends CommonWordTest
         $this->assertDoesNotMatchRegularExpression('/\d/', $word);
     }
 
-    public function testWordIsExactlyAsLongAsWordLen()
+    public function testWordIsExactlyAsLongAsWordLen(): void
     {
         $this->captcha->setWordLen(10);
         $this->captcha->generate();
@@ -78,7 +78,7 @@ class DumbTest extends CommonWordTest
     /**
      * @group Laminas-11522
      */
-    public function testDefaultLabelIsUsedWhenNoAlternateLabelSet()
+    public function testDefaultLabelIsUsedWhenNoAlternateLabelSet(): void
     {
         $this->assertEquals('Please type this word backwards', $this->captcha->getLabel());
     }
@@ -86,7 +86,7 @@ class DumbTest extends CommonWordTest
     /**
      * @group Laminas-11522
      */
-    public function testChangeLabelViaSetterMethod()
+    public function testChangeLabelViaSetterMethod(): void
     {
         $this->captcha->setLabel('Testing');
         $this->assertEquals('Testing', $this->captcha->getLabel());

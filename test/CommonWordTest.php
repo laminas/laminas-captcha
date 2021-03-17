@@ -26,7 +26,7 @@ abstract class CommonWordTest extends TestCase
     /**
      * @group Laminas-91
      */
-    public function testLoadInvalidSessionClass()
+    public function testLoadInvalidSessionClass(): void
     {
         $wordAdapter = new $this->wordClass();
         $wordAdapter->setSessionClass('LaminasTest\Captcha\InvalidClassName');
@@ -35,7 +35,7 @@ abstract class CommonWordTest extends TestCase
         $wordAdapter->getSession();
     }
 
-    public function testErrorMessages()
+    public function testErrorMessages(): void
     {
         $wordAdapter = new $this->wordClass();
         $this->assertFalse($wordAdapter->isValid('foo'));

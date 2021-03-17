@@ -29,6 +29,7 @@ class Dumb extends AbstractWord
      * Set the label for the CAPTCHA
      *
      * @param string $label
+     * @return void
      */
     public function setLabel($label)
     {
