@@ -32,7 +32,9 @@
         "laminas/laminas-session": "^2.10",
         "laminas/laminas-text": "^2.8",
         "laminas/laminas-validator": "^2.14",
-        "phpunit/phpunit": "^9.4.3"
+        "phpunit/phpunit": "^9.4.3",
+        "psalm/plugin-phpunit": "^0.15.1",
+        "vimeo/psalm": "^4.6"
     },
     "suggest": {
         "laminas/laminas-i18n-resources": "Translations of captcha messages",

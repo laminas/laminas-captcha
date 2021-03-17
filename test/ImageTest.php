@@ -102,32 +102,32 @@ class ImageTest extends TestCase
         return $this->tmpDir;
     }
 
-    public function testCaptchaSetSuffix()
+    public function testCaptchaSetSuffix(): void
     {
         $this->captcha->setSuffix(".jpeg");
         $this->assertEquals('.jpeg', $this->captcha->getSuffix());
     }
 
-    public function testCaptchaSetImgURL()
+    public function testCaptchaSetImgURL(): void
     {
         $this->captcha->setImgUrl("/some/other/url/");
         $this->assertEquals('/some/other/url/', $this->captcha->getImgUrl());
     }
 
-    public function testCaptchaCreatesImage()
+    public function testCaptchaCreatesImage(): void
     {
         $this->captcha->generate();
         $this->assertFileExists($this->testDir . "/" . $this->captcha->getId() . '.png');
     }
 
-    public function testCaptchaSetExpiration()
+    public function testCaptchaSetExpiration(): void
     {
         $this->assertEquals($this->captcha->getExpiration(), 600);
         $this->captcha->setExpiration(3600);
         $this->assertEquals($this->captcha->getExpiration(), 3600);
     }
 
-    public function testCaptchaImageCleanup()
+    public function testCaptchaImageCleanup(): void
     {
         $this->captcha->generate();
         $filename = $this->testDir . "/" . $this->captcha->getId() . ".png";
@@ -143,7 +143,7 @@ class ImageTest extends TestCase
     /**
      * @group Laminas-10006
      */
-    public function testCaptchaImageCleanupOnlyCaptchaFilesIdentifiedByTheirSuffix()
+    public function testCaptchaImageCleanupOnlyCaptchaFilesIdentifiedByTheirSuffix(): void
     {
         if (! getenv('TESTS_LAMINAS_CAPTCHA_GC')) {
             $this->markTestSkipped('Enable TESTS_LAMINAS_CAPTCHA_GC to run this test');
@@ -165,7 +165,7 @@ class ImageTest extends TestCase
         $this->assertFileExists($otherFile, "File $otherFile was not found after GC");
     }
 
-    public function testGenerateReturnsId()
+    public function testGenerateReturnsId(): void
     {
         $id = $this->captcha->generate();
         $this->assertNotEmpty($id);
@@ -173,7 +173,7 @@ class ImageTest extends TestCase
         $this->id = $id;
     }
 
-    public function testGetWordReturnsWord()
+    public function testGetWordReturnsWord(): void
     {
         $this->captcha->generate();
         $word = $this->captcha->getWord();
@@ -183,7 +183,7 @@ class ImageTest extends TestCase
         $this->word = $word;
     }
 
-    public function testGetWordLength()
+    public function testGetWordLength(): void
     {
         $this->captcha->setWordLen(4);
         $this->captcha->generate();
@@ -193,7 +193,7 @@ class ImageTest extends TestCase
         $this->word = $word;
     }
 
-    public function testGenerateIsRandomised()
+    public function testGenerateIsRandomised(): void
     {
         $id1   = $this->captcha->generate();
         $word1 = $this->captcha->getWord();
@@ -206,7 +206,7 @@ class ImageTest extends TestCase
         $this->assertNotEquals($word1, $word2);
     }
 
-    public function testRenderInitializesSessionData()
+    public function testRenderInitializesSessionData(): void
     {
         $this->captcha->generate();
         $session = $this->captcha->getSession();
@@ -215,14 +215,14 @@ class ImageTest extends TestCase
         $this->assertEquals($this->captcha->getWord(), $session->word);
     }
 
-    public function testWordValidates()
+    public function testWordValidates(): void
     {
         $this->captcha->generate();
         $input = ["id" => $this->captcha->getId(), "input" => $this->captcha->getWord()];
         $this->assertTrue($this->captcha->isValid($input));
     }
 
-    public function testMissingNotValid()
+    public function testMissingNotValid(): void
     {
         $this->captcha->generate();
         $this->assertFalse($this->captcha->isValid([]));
@@ -230,21 +230,21 @@ class ImageTest extends TestCase
         $this->assertFalse($this->captcha->isValid($input));
     }
 
-    public function testWrongWordNotValid()
+    public function testWrongWordNotValid(): void
     {
         $this->captcha->generate();
         $input = ["id" => $this->captcha->getId(), "input" => "blah"];
         $this->assertFalse($this->captcha->isValid($input));
     }
 
-    public function testNoFontProvidedWillThrowException()
+    public function testNoFontProvidedWillThrowException(): void
     {
         $this->expectException(NoFontProvidedException::class);
         $captcha = new ImageCaptcha();
         $captcha->generate();
     }
 
-    public function testImageProvidedNotLoadableWillThrowException()
+    public function testImageProvidedNotLoadableWillThrowException(): void
     {
         $this->expectException(ImageNotLoadableException::class);
         $captcha = new ImageCaptcha([

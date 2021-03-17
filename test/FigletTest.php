@@ -41,14 +41,14 @@ class FigletTest extends CommonWordTest
         ]);
     }
 
-    public function testTimeoutPopulatedByDefault()
+    public function testTimeoutPopulatedByDefault(): void
     {
         $ttl = $this->captcha->getTimeout();
         $this->assertNotEmpty($ttl);
         $this->assertIsInt($ttl);
     }
 
-    public function testCanSetTimeout()
+    public function testCanSetTimeout(): void
     {
         $ttl = $this->captcha->getTimeout();
         $this->captcha->setTimeout(3600);
@@ -56,7 +56,7 @@ class FigletTest extends CommonWordTest
         $this->assertEquals(3600, $this->captcha->getTimeout());
     }
 
-    public function testGenerateReturnsId()
+    public function testGenerateReturnsId(): void
     {
         $id = $this->captcha->generate();
         $this->assertNotEmpty($id);
@@ -64,7 +64,7 @@ class FigletTest extends CommonWordTest
         $this->id = $id;
     }
 
-    public function testGetWordReturnsWord()
+    public function testGetWordReturnsWord(): void
     {
         $this->captcha->generate();
         $word = $this->captcha->getWord();
@@ -74,7 +74,7 @@ class FigletTest extends CommonWordTest
         $this->word = $word;
     }
 
-    public function testGetWordLength()
+    public function testGetWordLength(): void
     {
         $this->captcha->setWordLen(4);
         $this->captcha->generate();
@@ -84,7 +84,7 @@ class FigletTest extends CommonWordTest
         $this->word = $word;
     }
 
-    public function testGenerateIsRandomised()
+    public function testGenerateIsRandomised(): void
     {
         $id1   = $this->captcha->generate();
         $word1 = $this->captcha->getWord();
@@ -97,7 +97,7 @@ class FigletTest extends CommonWordTest
         $this->assertNotEquals($word1, $word2);
     }
 
-    public function testGenerateInitializesSessionData()
+    public function testGenerateInitializesSessionData(): void
     {
         $this->captcha->generate();
         $session = $this->captcha->getSession();
@@ -106,14 +106,14 @@ class FigletTest extends CommonWordTest
         $this->assertEquals($this->captcha->getWord(), $session->word);
     }
 
-    public function testWordValidates()
+    public function testWordValidates(): void
     {
         $this->captcha->generate();
         $input = ['id' => $this->captcha->getId(), 'input' => $this->captcha->getWord()];
         $this->assertTrue($this->captcha->isValid($input));
     }
 
-    public function testMissingNotValid()
+    public function testMissingNotValid(): void
     {
         $this->captcha->generate();
         $this->assertFalse($this->captcha->isValid(''));
@@ -122,19 +122,19 @@ class FigletTest extends CommonWordTest
         $this->assertFalse($this->captcha->isValid($input));
     }
 
-    public function testWrongWordNotValid()
+    public function testWrongWordNotValid(): void
     {
         $this->captcha->generate();
         $input = ["id" => $this->captcha->getId(), "input" => "blah"];
         $this->assertFalse($this->captcha->isValid($input));
     }
 
-    public function testUsesFigletCaptchaHelperByDefault()
+    public function testUsesFigletCaptchaHelperByDefault(): void
     {
         $this->assertEquals('captcha/figlet', $this->captcha->getHelperName());
     }
 
-    public function testCaptchaShouldBeConfigurableViaTraversableObject()
+    public function testCaptchaShouldBeConfigurableViaTraversableObject(): void
     {
         $options = [
             'name'         => 'foo',
@@ -151,14 +151,14 @@ class FigletTest extends CommonWordTest
     /**
      * @doesNotPerformAssertions
      */
-    public function testShouldAllowFigletsLargerThanFourteenCharacters()
+    public function testShouldAllowFigletsLargerThanFourteenCharacters(): void
     {
         $this->captcha->setName('foo')
                       ->setWordLen(14);
         $this->captcha->generate();
     }
 
-    public function testShouldNotValidateEmptyInputAgainstEmptySession()
+    public function testShouldNotValidateEmptyInputAgainstEmptySession(): void
     {
         // Regression Test for Laminas-4245
         $this->captcha->setName('foo')
@@ -180,7 +180,7 @@ class FigletTest extends CommonWordTest
     /**
      * @group Laminas-5728
      */
-    public function testSetSessionWorks()
+    public function testSetSessionWorks(): void
     {
         if (headers_sent($file, $line)) {
             $this->markTestSkipped("Cannot use sessions because headers already sent");

@@ -456,7 +456,7 @@ class Image extends AbstractWord
     /**
      * Generate random character size
      *
-     * @return int
+     * @return float|int
      */
     protected function randomSize()
     {
@@ -497,6 +497,7 @@ class Image extends AbstractWord
      * @param string $word Captcha word
      * @throws Exception\NoFontProvidedException If no font was set.
      * @throws Exception\ImageNotLoadableException If start image cannot be loaded.
+     * @return void
      */
     protected function generateImage($id, $word)
     {
@@ -618,6 +619,8 @@ class Image extends AbstractWord
 
     /**
      * Remove old files from image directory
+     *
+     * @return void
      */
     protected function gc()
     {
