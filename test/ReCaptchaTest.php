@@ -9,10 +9,12 @@
 namespace LaminasTest\Captcha;
 
 use Laminas\Captcha\ReCaptcha;
-use Laminas\Http\Client\Adapter\Socket;
 use Laminas\Http\Client as HttpClient;
+use Laminas\Http\Client\Adapter\Socket;
 use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
 use PHPUnit\Framework\TestCase;
+
+use function getenv;
 
 /**
  * @group      Laminas_Captcha
@@ -22,8 +24,6 @@ class ReCaptchaTest extends TestCase
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -35,22 +35,22 @@ class ReCaptchaTest extends TestCase
     public function testConstructorShouldSetOptions()
     {
         $options = [
-            'secret_key' => 'secretKey',
-            'site_key'  => 'siteKey',
-            'size' => 'a',
-            'theme' => 'b',
-            'type' => 'c',
-            'tabindex' => 'd',
-            'callback' => 'e',
+            'secret_key'       => 'secretKey',
+            'site_key'         => 'siteKey',
+            'size'             => 'a',
+            'theme'            => 'b',
+            'type'             => 'c',
+            'tabindex'         => 'd',
+            'callback'         => 'e',
             'expired-callback' => 'f',
-            'hl' => 'g',
-            'noscript' => 'h',
+            'hl'               => 'g',
+            'noscript'         => 'h',
         ];
         $captcha = new ReCaptcha($options);
         $service = $captcha->getService();
 
         // have params been stored correctly?
-        $test = $service->getParams();
+        $test    = $service->getParams();
         $compare = ['noscript' => $options['noscript']];
         foreach ($compare as $key => $value) {
             $this->assertArrayHasKey($key, $test);
@@ -58,15 +58,15 @@ class ReCaptchaTest extends TestCase
         }
 
         // have options been stored correctly?
-        $test = $service->getOptions();
+        $test    = $service->getOptions();
         $compare = [
-            'size' => $options['size'],
-            'theme' => $options['theme'],
-            'type' => $options['type'],
-            'tabindex' => $options['tabindex'],
-            'callback' => $options['callback'],
+            'size'             => $options['size'],
+            'theme'            => $options['theme'],
+            'type'             => $options['type'],
+            'tabindex'         => $options['tabindex'],
+            'callback'         => $options['callback'],
             'expired-callback' => $options['expired-callback'],
-            'hl' => $options['hl'],
+            'hl'               => $options['hl'],
         ];
         $this->assertEquals($compare, $test);
     }
@@ -82,8 +82,8 @@ class ReCaptchaTest extends TestCase
 
     public function testSetAndGetSiteAndSecretKeys()
     {
-        $captcha = new ReCaptcha();
-        $siteKey = 'siteKey';
+        $captcha   = new ReCaptcha();
+        $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
         $captcha->setSiteKey($siteKey)
                 ->setSecretKey($secretKey);
@@ -97,8 +97,8 @@ class ReCaptchaTest extends TestCase
 
     public function testSetAndGetSiteAndSecretKeysViaBCMethods()
     {
-        $captcha = new ReCaptcha();
-        $siteKey = 'siteKey';
+        $captcha   = new ReCaptcha();
+        $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
         $captcha->setPubKey($siteKey)
                 ->setPrivKey($secretKey);
@@ -112,26 +112,26 @@ class ReCaptchaTest extends TestCase
 
     public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptions()
     {
-        $siteKey = 'siteKey';
+        $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
-        $options = [
-            'site_key' => $siteKey,
-            'secret_key' => $secretKey
+        $options   = [
+            'site_key'   => $siteKey,
+            'secret_key' => $secretKey,
         ];
-        $captcha = new ReCaptcha($options);
+        $captcha   = new ReCaptcha($options);
         $this->assertSame($siteKey, $captcha->getService()->getSiteKey());
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
 
     public function testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptionsWithBCNames()
     {
-        $siteKey = 'siteKey';
+        $siteKey   = 'siteKey';
         $secretKey = 'secretKey';
-        $options = [
-            'pubKey' => $siteKey,
-            'privKey' => $secretKey
+        $options   = [
+            'pubKey'  => $siteKey,
+            'privKey' => $secretKey,
         ];
-        $captcha = new ReCaptcha($options);
+        $captcha   = new ReCaptcha($options);
         $this->assertSame($siteKey, $captcha->getService()->getSiteKey());
         $this->assertSame($secretKey, $captcha->getService()->getSecretKey());
     }
@@ -147,21 +147,21 @@ class ReCaptchaTest extends TestCase
     /** @group Laminas-7654 */
     public function testAllowsSettingThemeOptionOnServiceObject()
     {
-        $captcha = new ReCaptcha;
+        $captcha = new ReCaptcha();
         $captcha->setOption('theme', 'dark');
         $this->assertEquals('dark', $captcha->getService()->getOption('theme'));
     }
 
     public function testUsesReCaptchaHelper()
     {
-        $captcha = new ReCaptcha;
+        $captcha = new ReCaptcha();
         $this->assertEquals('captcha/recaptcha', $captcha->getHelperName());
     }
 
     public function testValidationForDifferentElementName()
     {
         $captcha = new ReCaptcha([
-            'site_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
+            'site_key'   => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
             'secret_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SECRET_KEY'),
         ]);
         $service = $captcha->getService();
@@ -169,8 +169,8 @@ class ReCaptchaTest extends TestCase
         $service->setHttpClient($this->getHttpClient());
 
         $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $value = 'g-recaptcha-response';
-        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
+        $value    = 'g-recaptcha-response';
+        $context  = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }
@@ -178,7 +178,7 @@ class ReCaptchaTest extends TestCase
     public function testValidationForResponseElementName()
     {
         $captcha = new ReCaptcha([
-            'site_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
+            'site_key'   => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SITE_KEY'),
             'secret_key' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_SECRET_KEY'),
         ]);
         $service = $captcha->getService();
@@ -186,8 +186,8 @@ class ReCaptchaTest extends TestCase
         $service->setHttpClient($this->getHttpClient());
 
         $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $value = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
+        $value    = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
+        $context  = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }

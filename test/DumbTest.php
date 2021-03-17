@@ -9,24 +9,24 @@
 namespace LaminasTest\Captcha;
 
 use Laminas\Captcha\Dumb as DumbCaptcha;
+use LaminasTest\Captcha\TestAsset\SessionContainer;
+
+use function strlen;
 
 /**
  * @group      Laminas_Captcha
  */
 class DumbTest extends CommonWordTest
 {
-    protected $wordClass = 'Laminas\Captcha\Dumb';
+    /** @var string */
+    protected $wordClass = DumbCaptcha::class;
 
-    /**
-     * @var DumbCaptcha
-     */
+    /** @var DumbCaptcha */
     protected $captcha;
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
-     *
-     * @return void
      */
     public function setUp(): void
     {
@@ -35,7 +35,7 @@ class DumbTest extends CommonWordTest
         }
 
         $this->captcha = new DumbCaptcha([
-            'sessionClass' => 'LaminasTest\Captcha\TestAsset\SessionContainer',
+            'sessionClass' => SessionContainer::class,
         ]);
     }
 
