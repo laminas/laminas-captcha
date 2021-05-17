@@ -1,30 +1,20 @@
 {
     "name": "laminas/laminas-captcha",
     "description": "Generate and validate CAPTCHAs using Figlets, images, ReCaptcha, and more",
-    "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
         "captcha"
     ],
     "homepage": "https://laminas.dev",
-    "support": {
-        "docs": "https://docs.laminas.dev/laminas-captcha/",
-        "issues": "https://github.com/laminas/laminas-captcha/issues",
-        "source": "https://github.com/laminas/laminas-captcha",
-        "rss": "https://github.com/laminas/laminas-captcha/releases.atom",
-        "chat": "https://laminas.dev/chat",
-        "forum": "https://discourse.laminas.dev"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-    },
+    "license": "BSD-3-Clause",
     "require": {
         "php": "^7.3 || ~8.0.0",
         "laminas/laminas-math": "^2.7 || ^3.0",
         "laminas/laminas-stdlib": "^3.3",
         "laminas/laminas-zendframework-bridge": "^1.1"
+    },
+    "replace": {
+        "zendframework/zend-captcha": "^2.9.0"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.1.4",
@@ -43,6 +33,10 @@
         "laminas/laminas-text": "Laminas\\Text component",
         "laminas/laminas-validator": "Laminas\\Validator component"
     },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {},
     "autoload": {
         "psr-4": {
             "Laminas\\Captcha\\": "src/"
@@ -63,7 +57,12 @@
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
-    "replace": {
-        "zendframework/zend-captcha": "^2.9.0"
+    "support": {
+        "issues": "https://github.com/laminas/laminas-captcha/issues",
+        "forum": "https://discourse.laminas.dev",
+        "chat": "https://laminas.dev/chat",
+        "source": "https://github.com/laminas/laminas-captcha",
+        "docs": "https://docs.laminas.dev/laminas-captcha/",
+        "rss": "https://github.com/laminas/laminas-captcha/releases.atom"
     }
 }
