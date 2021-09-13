@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cf5af8ea9752e459f38d9b3d896d6e4",
+    "content-hash": "0b715ef3095f43fa823deaecc0d410c5",
     "packages": [
         {
             "name": "laminas/laminas-math",
@@ -3738,6 +3738,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
