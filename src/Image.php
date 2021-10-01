@@ -537,6 +537,8 @@ class Image extends AbstractWord
         $textbox = imageftbbox($fsize, 0, $font, $word);
         $x       = ($w - ($textbox[2] - $textbox[0])) / 2;
         $y       = ($h - ($textbox[7] - $textbox[1])) / 2;
+        $x       = (int) $x;
+        $y       = (int) $y;
         imagefttext($img, $fsize, 0, $x, $y, $textColor, $font, $word);
 
         // generate noise
@@ -570,6 +572,8 @@ class Image extends AbstractWord
             for ($y = 0; $y < $h; $y++) {
                 $sx = $x + (sin($x * $freq1 + $ph1) + sin($y * $freq3 + $ph3)) * $szx;
                 $sy = $y + (sin($x * $freq2 + $ph2) + sin($y * $freq4 + $ph4)) * $szy;
+                $sx = (int) $sx;
+                $sy = (int) $sy;
 
                 if ($sx < 0 || $sy < 0 || $sx >= $w - 1 || $sy >= $h - 1) {
                     continue;

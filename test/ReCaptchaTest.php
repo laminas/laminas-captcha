@@ -172,9 +172,8 @@ class ReCaptchaTest extends TestCase
         $service->setIp('127.0.0.1');
         $service->setHttpClient($this->getHttpClient());
 
-        $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $value    = 'g-recaptcha-response';
-        $context  = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
+        $value   = 'g-recaptcha-response';
+        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }
@@ -189,9 +188,8 @@ class ReCaptchaTest extends TestCase
         $service->setIp('127.0.0.1');
         $service->setHttpClient($this->getHttpClient());
 
-        $response = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $value    = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
-        $context  = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
+        $value   = getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE');
+        $context = ['g-recaptcha-response' => getenv('TESTS_LAMINAS_SERVICE_RECAPTCHA_RESPONSE')];
 
         $this->assertTrue($captcha->isValid($value, $context));
     }
