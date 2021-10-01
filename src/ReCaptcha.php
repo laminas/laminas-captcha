@@ -173,7 +173,7 @@ class ReCaptcha extends AbstractAdapter
         parent::__construct($options);
 
         if (! empty($options)) {
-            if (array_key_exists('secret_key', $options)) {
+            if (array_key_exists('secret_key', $options) && is_string($options['secret_key'])) {
                 $this->getService()->setSecretKey($options['secret_key']);
             }
             if (array_key_exists('site_key', $options)) {
@@ -181,7 +181,7 @@ class ReCaptcha extends AbstractAdapter
             }
 
             // Support pubKey and pubKey for BC
-            if (array_key_exists('privKey', $options)) {
+            if (array_key_exists('privKey', $options) && is_string($options['privKey'])) {
                 $this->getService()->setSecretKey($options['privKey']);
             }
             if (array_key_exists('pubKey', $options)) {
