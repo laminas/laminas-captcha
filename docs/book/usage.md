@@ -40,7 +40,7 @@ you will use the combination of:
 - some mechanism of the adapter to render the CAPTCHA
 - `isValid()` to validate a submitted CAPTCHA solution
 
-> ### laminas-form integration
+> NOTE: laminas-form integration
 >
 > [laminas-form](https://github.com/laminas/laminas-form) contains integration
 > with laminas-captcha via the class `Laminas\Form\Element\Captcha`; read the
