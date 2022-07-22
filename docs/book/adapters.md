@@ -170,5 +170,3 @@ array that is passed to the constructor.
 
 The options keys `pubKey` and `privKey` and the getters and setters for these
 keys are supported in this version, but are deprecated.
-
-
