@@ -27,9 +27,13 @@ abstract class AbstractWord extends AbstractAdapter
     /**#@+
      * @var array Character sets
      */
+    /** @var list<string> */
     public static $V  = ["a", "e", "i", "o", "u", "y"];
+    /** @var list<string> */
     public static $VN = ["a", "e", "i", "o", "u", "y", "2", "3", "4", "5", "6", "7", "8", "9"];
+    /** @var list<string> */
     public static $C  = ["b", "c", "d", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
+    /** @var list<string> */
     public static $CN = ["b", "c", "d", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z", "2", "3", "4", "5", "6", "7", "8", "9"];
     /**#@-*/
     // @codingStandardsIgnoreEnd

@@ -9,36 +9,17 @@
     </MixedAssignment>
   </file>
   <file src="src/AbstractWord.php">
-    <MissingPropertyType occurrences="4">
-      <code>$C</code>
-      <code>$CN</code>
-      <code>$V</code>
-      <code>$VN</code>
-    </MissingPropertyType>
-    <MixedArgument occurrences="3">
-      <code>$consonants</code>
+    <MixedArgument occurrences="1">
       <code>$value['input']</code>
-      <code>$vowels</code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="2">
-      <code>$consonants[Rand::getInteger(0, $totIndexCon, true)]</code>
-      <code>$vowels[Rand::getInteger(0, $totIndexVow, true)]</code>
-    </MixedArrayAccess>
-    <MixedAssignment occurrences="7">
-      <code>$consonant</code>
-      <code>$consonants</code>
+    <MixedAssignment occurrences="3">
       <code>$this-&gt;id</code>
       <code>$this-&gt;word</code>
       <code>$value</code>
-      <code>$vowel</code>
-      <code>$vowels</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>string</code>
     </MixedInferredReturnType>
-    <MixedOperand occurrences="1">
-      <code>$consonant</code>
-    </MixedOperand>
     <MixedReturnStatement occurrences="1">
       <code>$this-&gt;word</code>
     </MixedReturnStatement>
@@ -48,10 +29,6 @@
     <RedundantCastGivenDocblockType occurrences="1">
       <code>(int) $ttl</code>
     </RedundantCastGivenDocblockType>
-    <TooManyArguments occurrences="2">
-      <code>Rand::getInteger(0, $totIndexCon, true)</code>
-      <code>Rand::getInteger(0, $totIndexVow, true)</code>
-    </TooManyArguments>
     <UnsafeInstantiation occurrences="1">
       <code>new $this-&gt;sessionClass('Laminas_Form_Captcha_' . $id)</code>
     </UnsafeInstantiation>
