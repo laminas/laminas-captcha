@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Captcha;
 
 use Laminas\Captcha\Dumb as DumbCaptcha;
