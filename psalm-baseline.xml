@@ -146,16 +146,9 @@
       <code>$value</code>
       <code>$value</code>
     </MixedArgument>
-    <MixedArrayAccess occurrences="1">
-      <code>$context[$value]</code>
-    </MixedArrayAccess>
-    <PossiblyNullArgument occurrences="2">
+    <PossiblyNullArgument occurrences="1">
       <code>$context</code>
-      <code>$context[$value]</code>
     </PossiblyNullArgument>
-    <PossiblyNullArrayAccess occurrences="1">
-      <code>$context[$value]</code>
-    </PossiblyNullArrayAccess>
     <PropertyNotSetInConstructor occurrences="1">
       <code>ReCaptcha</code>
     </PropertyNotSetInConstructor>
