@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Captcha;
 
 use ArrayObject;
 use Laminas\Captcha\Figlet as FigletCaptcha;
 use Laminas\Session\Container as SessionContainer;
 
-use function headers_sent;
 use function strlen;
 
 /**
@@ -176,9 +177,6 @@ class FigletTest extends CommonWordTest
      */
     public function testSetSessionWorks(): void
     {
-        if (headers_sent($file, $line)) {
-            $this->markTestSkipped("Cannot use sessions because headers already sent");
-        }
         $session = new SessionContainer('captcha');
         $this->captcha->setSession($session);
         $this->captcha->generate();

@@ -17,52 +17,38 @@ class MockCaptcha implements AdapterInterface
         $this->options = $options;
     }
 
-    /**
-     * @return string
-     */
+    /** @inheritDoc */
     public function generate()
     {
         return '';
     }
 
-    /**
-     * @param string $name
-     * @return self
-     */
+    /** @inheritDoc */
     public function setName($name)
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return string
-     */
+    /** @inheritDoc */
     public function getName()
     {
         return $this->name ?: '';
     }
 
-    /**
-     * @return string
-     */
+    /** @inheritDoc */
     public function getHelperName()
     {
         return 'doctype';
     }
 
-    /**
-     * @param mixed $value
-     * @return bool
-     */
+    /** @inheritDoc */
     public function isValid($value)
     {
         return true;
     }
 
-    /**
-     * @return array
-     */
+    /** @inheritDoc */
     public function getMessages()
     {
         return [];
