@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.6.4@97fe86c4e158b5a57c5150aa5055c38b5a809aab">
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
   <file src="src/AbstractAdapter.php">
     <DocblockTypeContradiction occurrences="1">
       <code>! is_array($options) &amp;&amp; ! $options instanceof Traversable</code>
     </DocblockTypeContradiction>
-    <LessSpecificImplementedReturnType occurrences="1">
-      <code>AbstractAdapter</code>
-    </LessSpecificImplementedReturnType>
-    <MixedArgument occurrences="2">
-      <code>$key</code>
-      <code>$value</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$key</code>
+    <MixedAssignment occurrences="1">
       <code>$value</code>
     </MixedAssignment>
   </file>
@@ -75,18 +67,12 @@
     <RedundantCastGivenDocblockType occurrences="1">
       <code>(int) $ttl</code>
     </RedundantCastGivenDocblockType>
-    <RedundantCondition occurrences="1">
-      <code>$session</code>
-    </RedundantCondition>
     <TooManyArguments occurrences="2">
       <code>Rand::getInteger(0, $totIndexCon, true)</code>
       <code>Rand::getInteger(0, $totIndexVow, true)</code>
     </TooManyArguments>
   </file>
   <file src="src/Dumb.php">
-    <MissingReturnType occurrences="1">
-      <code>setLabel</code>
-    </MissingReturnType>
     <PropertyNotSetInConstructor occurrences="4">
       <code>Dumb</code>
       <code>Dumb</code>
@@ -125,33 +111,11 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Image.php">
-    <InvalidReturnStatement occurrences="1">
-      <code>mt_rand(300, 700) / 100</code>
-    </InvalidReturnStatement>
-    <InvalidReturnType occurrences="1">
-      <code>int</code>
-    </InvalidReturnType>
-    <InvalidScalarArgument occurrences="11">
+    <InvalidScalarArgument occurrences="3">
       <code>$newcolor</code>
       <code>$newcolor</code>
       <code>$newcolor</code>
-      <code>$sx</code>
-      <code>$sx</code>
-      <code>$sx + 1</code>
-      <code>$sx + 1</code>
-      <code>$sy</code>
-      <code>$sy</code>
-      <code>$sy + 1</code>
-      <code>$sy + 1</code>
     </InvalidScalarArgument>
-    <MissingReturnType occurrences="2">
-      <code>gc</code>
-      <code>generateImage</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="2">
-      <code>$x</code>
-      <code>$y</code>
-    </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$x</code>
       <code>$y</code>
@@ -172,13 +136,7 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/ReCaptcha.php">
-    <DocblockTypeContradiction occurrences="1">
-      <code>$res</code>
-    </DocblockTypeContradiction>
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setOption($key, $value)</code>
-    </LessSpecificReturnStatement>
-    <MixedArgument occurrences="8">
+    <MixedArgument occurrences="7">
       <code>$context</code>
       <code>$context[$value]</code>
       <code>$options['pubKey']</code>
@@ -191,16 +149,6 @@
     <MixedArrayAccess occurrences="1">
       <code>$context[$value]</code>
     </MixedArrayAccess>
-    <MoreSpecificReturnType occurrences="1">
-      <code>ReCaptcha</code>
-    </MoreSpecificReturnType>
-    <PossiblyInvalidArgument occurrences="5">
-      <code>$options</code>
-      <code>$options</code>
-      <code>$options</code>
-      <code>$options</code>
-      <code>$options</code>
-    </PossiblyInvalidArgument>
     <PossiblyNullArgument occurrences="2">
       <code>$context</code>
       <code>$context[$value]</code>
@@ -211,36 +159,18 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>ReCaptcha</code>
     </PropertyNotSetInConstructor>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>$options</code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="test/CommonWordTest.php">
     <InvalidStringClass occurrences="2">
       <code>new $this-&gt;wordClass()</code>
       <code>new $this-&gt;wordClass()</code>
     </InvalidStringClass>
-    <MissingReturnType occurrences="2">
-      <code>testErrorMessages</code>
-      <code>testLoadInvalidSessionClass</code>
-    </MissingReturnType>
     <MixedMethodCall occurrences="4">
       <code>getMessages</code>
       <code>getSession</code>
       <code>isValid</code>
       <code>setSessionClass</code>
     </MixedMethodCall>
-  </file>
-  <file src="test/DumbTest.php">
-    <MissingReturnType occurrences="7">
-      <code>testChangeLabelViaSetterMethod</code>
-      <code>testDefaultLabelIsUsedWhenNoAlternateLabelSet</code>
-      <code>testGeneratePopulatesId</code>
-      <code>testGeneratePopulatesSessionWithWord</code>
-      <code>testGenerateWillNotUseNumbersIfUseNumbersIsDisabled</code>
-      <code>testUsesCaptchaDumbAsHelper</code>
-      <code>testWordIsExactlyAsLongAsWordLen</code>
-    </MissingReturnType>
   </file>
   <file src="test/FactoryTest.php">
     <DocblockTypeContradiction occurrences="1">
@@ -250,18 +180,6 @@
       <code>$testDir</code>
       <code>$tmpDir</code>
     </MissingConstructor>
-    <MissingReturnType occurrences="10">
-      <code>setUpImageTest</code>
-      <code>testCanCreateDumbCaptcha</code>
-      <code>testCanCreateDumbCaptchaUsingShortName</code>
-      <code>testCanCreateFigletCaptcha</code>
-      <code>testCanCreateFigletCaptchaUsingShortName</code>
-      <code>testCanCreateImageCaptcha</code>
-      <code>testCanCreateImageCaptchaUsingShortName</code>
-      <code>testCanCreateReCaptcha</code>
-      <code>testCanCreateReCaptchaUsingShortName</code>
-      <code>testOptionsArePassedToCaptchaAdapter</code>
-    </MissingReturnType>
     <NoInterfaceProperties occurrences="1">
       <code>$captcha-&gt;options</code>
     </NoInterfaceProperties>
@@ -270,23 +188,6 @@
     </RedundantConditionGivenDocblockType>
   </file>
   <file src="test/FigletTest.php">
-    <MissingReturnType occurrences="15">
-      <code>testCanSetTimeout</code>
-      <code>testCaptchaShouldBeConfigurableViaTraversableObject</code>
-      <code>testGenerateInitializesSessionData</code>
-      <code>testGenerateIsRandomised</code>
-      <code>testGenerateReturnsId</code>
-      <code>testGetWordLength</code>
-      <code>testGetWordReturnsWord</code>
-      <code>testMissingNotValid</code>
-      <code>testSetSessionWorks</code>
-      <code>testShouldAllowFigletsLargerThanFourteenCharacters</code>
-      <code>testShouldNotValidateEmptyInputAgainstEmptySession</code>
-      <code>testTimeoutPopulatedByDefault</code>
-      <code>testUsesFigletCaptchaHelperByDefault</code>
-      <code>testWordValidates</code>
-      <code>testWrongWordNotValid</code>
-    </MissingReturnType>
     <MixedMethodCall occurrences="2">
       <code>setTimeout</code>
       <code>setTimeout</code>
@@ -312,24 +213,6 @@
     <DocblockTypeContradiction occurrences="1">
       <code>null === $this-&gt;tmpDir</code>
     </DocblockTypeContradiction>
-    <MissingReturnType occurrences="16">
-      <code>testCaptchaCreatesImage</code>
-      <code>testCaptchaImageCleanup</code>
-      <code>testCaptchaImageCleanupOnlyCaptchaFilesIdentifiedByTheirSuffix</code>
-      <code>testCaptchaSetExpiration</code>
-      <code>testCaptchaSetImgURL</code>
-      <code>testCaptchaSetSuffix</code>
-      <code>testGenerateIsRandomised</code>
-      <code>testGenerateReturnsId</code>
-      <code>testGetWordLength</code>
-      <code>testGetWordReturnsWord</code>
-      <code>testImageProvidedNotLoadableWillThrowException</code>
-      <code>testMissingNotValid</code>
-      <code>testNoFontProvidedWillThrowException</code>
-      <code>testRenderInitializesSessionData</code>
-      <code>testWordValidates</code>
-      <code>testWrongWordNotValid</code>
-    </MissingReturnType>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>assertIsString</code>
       <code>assertIsString</code>
@@ -351,38 +234,6 @@
       <code>setPrivKey</code>
       <code>setPubKey</code>
     </DeprecatedMethod>
-    <MissingReturnType occurrences="11">
-      <code>testAllowsSettingThemeOptionOnServiceObject</code>
-      <code>testConstructorShouldAllowSettingThemeOptionOnServiceObject</code>
-      <code>testConstructorShouldSetOptions</code>
-      <code>testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptions</code>
-      <code>testSetAndGetRecaptchaServiceSiteAndSecretKeysFromOptionsWithBCNames</code>
-      <code>testSetAndGetSiteAndSecretKeys</code>
-      <code>testSetAndGetSiteAndSecretKeysViaBCMethods</code>
-      <code>testShouldAllowSpecifyingServiceObject</code>
-      <code>testUsesReCaptchaHelper</code>
-      <code>testValidationForDifferentElementName</code>
-      <code>testValidationForResponseElementName</code>
-    </MissingReturnType>
-  </file>
-  <file src="test/TestAsset/MockCaptcha.php">
-    <InvalidReturnType occurrences="2">
-      <code>generate</code>
-      <code>setName</code>
-    </InvalidReturnType>
-    <MissingParamType occurrences="1">
-      <code>$options</code>
-    </MissingParamType>
-    <MissingPropertyType occurrences="2">
-      <code>$name</code>
-      <code>$options</code>
-    </MissingPropertyType>
-    <MixedInferredReturnType occurrences="1">
-      <code>getName</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;name</code>
-    </MixedReturnStatement>
   </file>
   <file src="test/TestAsset/SessionContainer.php">
     <MissingParamType occurrences="6">

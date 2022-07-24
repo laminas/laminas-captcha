@@ -261,14 +261,13 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Set session namespace object
      *
-     * @return AbstractWord Provides a fluent interface
+     * @return $this Provides a fluent interface
      */
     public function setSession(Container $session)
     {
-        $this->session = $session;
-        if ($session) {
-            $this->keepSession = true;
-        }
+        $this->session     = $session;
+        $this->keepSession = true;
+
         return $this;
     }
 

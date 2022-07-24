@@ -4,7 +4,6 @@ namespace Laminas\Captcha;
 
 use DirectoryIterator;
 use Laminas\Stdlib\ErrorHandler;
-use Traversable;
 
 use function extension_loaded;
 use function file_exists;
@@ -136,7 +135,7 @@ class Image extends AbstractWord
     /**
      * Constructor
      *
-     * @param array|Traversable $options
+     * @param iterable<string, mixed>|null $options
      * @throws Exception\ExtensionNotLoadedException
      */
     public function __construct($options = null)
