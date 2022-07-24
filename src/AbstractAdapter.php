@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php // phpcs:disable SlevomatCodingStandard.TypeHints.DeclareStrictTypes.DeclareStrictTypesMissing
 
 namespace Laminas\Captcha;
 
