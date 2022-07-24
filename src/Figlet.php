@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laminas\Captcha;
 
 use Laminas\Text\Figlet\Figlet as FigletManager;
