@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Laminas\Captcha;
 
-use Laminas\Math\Rand;
 use Laminas\Session\Container;
 
 use function class_exists;
 use function count;
 use function is_array;
 use function md5;
+use function random_bytes;
+use function random_int;
 use function strlen;
 use function strtolower;
 use function substr;
@@ -317,8 +318,9 @@ abstract class AbstractWord extends AbstractAdapter
         $totIndexVow = count($vowels) - 1;
         for ($i = 0; $i < $wordLen; $i += 2) {
             // generate word with mix of vowels and consonants
-            $consonant = $consonants[Rand::getInteger(0, $totIndexCon, true)];
-            $vowel     = $vowels[Rand::getInteger(0, $totIndexVow, true)];
+
+            $consonant = $consonants[random_int(0, $totIndexCon)];
+            $vowel     = $vowels[random_int(0, $totIndexVow)];
             $word     .= $consonant . $vowel;
         }
 
@@ -353,7 +355,7 @@ abstract class AbstractWord extends AbstractAdapter
      */
     protected function generateRandomId()
     {
-        return md5(Rand::getBytes(32));
+        return md5(random_bytes(32));
     }
 
     /**
