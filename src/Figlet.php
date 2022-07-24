@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Laminas\Captcha;
 
 use Laminas\Text\Figlet\Figlet as FigletManager;
-use Traversable;
 
 /**
  * Captcha based on figlet text rendering service
@@ -24,7 +23,7 @@ class Figlet extends AbstractWord
     /**
      * Constructor
      *
-     * @param null|string|array|Traversable $options
+     * @param null|iterable<string, mixed> $options
      */
     public function __construct($options = null)
     {

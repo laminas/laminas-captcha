@@ -36,28 +36,28 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Random session ID
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
 
     /**
      * Generated word
      *
-     * @var string
+     * @var string|null
      */
     protected $word;
 
     /**
      * Session
      *
-     * @var Container
+     * @var Container|null
      */
     protected $session;
 
     /**
      * Class name for sessions
      *
-     * @var string
+     * @var class-string<Container>
      */
     protected $sessionClass = Container::class;
 
@@ -100,7 +100,7 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Error messages
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $messageTemplates = [
         self::MISSING_VALUE => 'Empty captcha value',
@@ -128,7 +128,7 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Set session class for persistence
      *
-     * @param  string $sessionClass
+     * @param  class-string $sessionClass
      * @return AbstractWord Provides a fluent interface
      */
     public function setSessionClass($sessionClass)
@@ -167,7 +167,7 @@ abstract class AbstractWord extends AbstractAdapter
     public function getId()
     {
         if (null === $this->id) {
-            $this->setId($this->generateRandomId());
+            $this->id = $this->generateRandomId();
         }
         return $this->id;
     }
@@ -248,7 +248,7 @@ abstract class AbstractWord extends AbstractAdapter
      */
     public function getSession()
     {
-        if (! isset($this->session) || (null === $this->session)) {
+        if (! isset($this->session)) {
             $id = $this->getId();
             if (! class_exists($this->sessionClass)) {
                 throw new Exception\InvalidArgumentException("Session class $this->sessionClass not found");
@@ -359,7 +359,7 @@ abstract class AbstractWord extends AbstractAdapter
     /**
      * Validate the word
      *
-     * @see    Laminas\Validator\ValidatorInterface::isValid()
+     * @see    \Laminas\Validator\ValidatorInterface::isValid()
      *
      * @param  mixed $value
      * @param  mixed $context

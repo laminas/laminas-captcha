@@ -40,7 +40,7 @@ abstract class AbstractAdapter extends AbstractValidator implements AdapterInter
     /**
      * Options to skip when processing options
      *
-     * @var array
+     * @var list<string>
      */
     protected $skipOptions = [
         'options',

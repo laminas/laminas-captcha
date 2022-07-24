@@ -35,6 +35,7 @@
         "laminas/laminas-validator": "^2.19.0"
     },
     "require-dev": {
+        "ext-gd": "*",
         "laminas/laminas-coding-standard": "~2.3.0",
         "phpunit/phpunit": "^9.5.21",
         "psalm/plugin-phpunit": "^0.17.0",

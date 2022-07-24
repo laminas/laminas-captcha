@@ -596,7 +596,12 @@ class Image extends AbstractWord
                               + $colorXY * $fracX * $fracY;
                 }
 
-                imagesetpixel($img2, $x, $y, imagecolorallocate($img2, $newcolor, $newcolor, $newcolor));
+                imagesetpixel($img2, $x, $y, imagecolorallocate(
+                    $img2,
+                    (int) $newcolor,
+                    (int) $newcolor,
+                    (int) $newcolor
+                ));
             }
         }
 

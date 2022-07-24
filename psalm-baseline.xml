@@ -9,14 +9,6 @@
     </MixedAssignment>
   </file>
   <file src="src/AbstractWord.php">
-    <DocblockTypeContradiction occurrences="3">
-      <code>! isset($this-&gt;session)</code>
-      <code>null === $this-&gt;id</code>
-      <code>null === $this-&gt;session</code>
-    </DocblockTypeContradiction>
-    <LessSpecificReturnStatement occurrences="1">
-      <code>$this-&gt;session</code>
-    </LessSpecificReturnStatement>
     <MissingPropertyType occurrences="4">
       <code>$C</code>
       <code>$CN</code>
@@ -44,25 +36,14 @@
     <MixedInferredReturnType occurrences="1">
       <code>string</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="3">
-      <code>new $this-&gt;sessionClass('Laminas_Form_Captcha_' . $id)</code>
-      <code>setExpirationHops</code>
-      <code>setExpirationSeconds</code>
-    </MixedMethodCall>
     <MixedOperand occurrences="1">
       <code>$consonant</code>
     </MixedOperand>
     <MixedReturnStatement occurrences="1">
       <code>$this-&gt;word</code>
     </MixedReturnStatement>
-    <MoreSpecificReturnType occurrences="1">
-      <code>Container</code>
-    </MoreSpecificReturnType>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyTypeCoercion occurrences="1">
-      <code>new $this-&gt;sessionClass('Laminas_Form_Captcha_' . $id)</code>
+      <code>$sessionClass</code>
     </PropertyTypeCoercion>
     <RedundantCastGivenDocblockType occurrences="1">
       <code>(int) $ttl</code>
@@ -71,12 +52,12 @@
       <code>Rand::getInteger(0, $totIndexCon, true)</code>
       <code>Rand::getInteger(0, $totIndexVow, true)</code>
     </TooManyArguments>
+    <UnsafeInstantiation occurrences="1">
+      <code>new $this-&gt;sessionClass('Laminas_Form_Captcha_' . $id)</code>
+    </UnsafeInstantiation>
   </file>
   <file src="src/Dumb.php">
-    <PropertyNotSetInConstructor occurrences="4">
-      <code>Dumb</code>
-      <code>Dumb</code>
-      <code>Dumb</code>
+    <PropertyNotSetInConstructor occurrences="1">
       <code>Dumb</code>
     </PropertyNotSetInConstructor>
   </file>
@@ -99,23 +80,14 @@
     </MixedMethodCall>
   </file>
   <file src="src/Figlet.php">
-    <PossiblyInvalidArgument occurrences="2">
+    <InvalidArgument occurrences="1">
       <code>$options</code>
-      <code>$options</code>
-    </PossiblyInvalidArgument>
-    <PropertyNotSetInConstructor occurrences="4">
-      <code>Figlet</code>
-      <code>Figlet</code>
-      <code>Figlet</code>
+    </InvalidArgument>
+    <PropertyNotSetInConstructor occurrences="1">
       <code>Figlet</code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Image.php">
-    <InvalidScalarArgument occurrences="3">
-      <code>$newcolor</code>
-      <code>$newcolor</code>
-      <code>$newcolor</code>
-    </InvalidScalarArgument>
     <MixedAssignment occurrences="2">
       <code>$x</code>
       <code>$y</code>
@@ -126,12 +98,9 @@
       <code>$textbox[7]</code>
       <code>$w - ($textbox[2] - $textbox[0])</code>
     </MixedOperand>
-    <PropertyNotSetInConstructor occurrences="6">
+    <PropertyNotSetInConstructor occurrences="3">
       <code>$font</code>
       <code>$startImage</code>
-      <code>Image</code>
-      <code>Image</code>
-      <code>Image</code>
       <code>Image</code>
     </PropertyNotSetInConstructor>
   </file>
@@ -141,7 +110,6 @@
       <code>$context[$value]</code>
       <code>$options['pubKey']</code>
       <code>$options['site_key']</code>
-      <code>$value</code>
       <code>$value</code>
       <code>$value</code>
       <code>$value</code>
