@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\Captcha;
 
-use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
+use Laminas\ReCaptcha\RecaptchaServiceInterface;
 
 use function array_key_exists;
 use function is_array;
@@ -14,7 +14,7 @@ use function is_string;
 /**
  * ReCaptcha adapter
  *
- * Allows to insert captchas driven by ReCaptcha service
+ * Allows inserting captchas driven by ReCaptcha service
  *
  * @see http://recaptcha.net/apidocs/captcha/
  */
@@ -23,7 +23,7 @@ class ReCaptcha extends AbstractAdapter
     /**
      * Recaptcha service object
      *
-     * @var ReCaptchaService
+     * @var RecaptchaServiceInterface
      */
     protected $service;
 
@@ -161,7 +161,7 @@ class ReCaptcha extends AbstractAdapter
      */
     public function __construct($options = null)
     {
-        $this->setService(new ReCaptchaService());
+        $this->setService($options['service'] ?? new \Laminas\ReCaptcha\ReCaptcha());
         $this->serviceParams  = $this->getService()->getParams();
         $this->serviceOptions = $this->getService()->getOptions();
 
@@ -192,7 +192,7 @@ class ReCaptcha extends AbstractAdapter
      *
      * @return ReCaptcha Provides a fluent interface
      */
-    public function setService(ReCaptchaService $service)
+    public function setService(RecaptchaServiceInterface $service)
     {
         $this->service = $service;
         return $this;
@@ -201,7 +201,7 @@ class ReCaptcha extends AbstractAdapter
     /**
      * Retrieve ReCaptcha service object
      *
-     * @return ReCaptchaService
+     * @return RecaptchaServiceInterface
      */
     public function getService()
     {
