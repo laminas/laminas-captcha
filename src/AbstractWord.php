@@ -394,7 +394,7 @@ abstract class AbstractWord extends AbstractAdapter
         $input = strtolower($value['input']);
         $this->setValue($input);
 
-        if (!preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', $value['id'])) {
+        if (!isset($value['id']) || ! preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', (string) $value['id'])) {
             $this->error(self::MISSING_ID);
             return false;
         }
