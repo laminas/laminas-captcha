@@ -394,7 +394,7 @@ abstract class AbstractWord extends AbstractAdapter
         $input = strtolower($value['input']);
         $this->setValue($input);
 
-        if (! isset($value['id'])) {
+        if (!preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', $value['id'])) {
             $this->error(self::MISSING_ID);
             return false;
         }
@@ -404,7 +404,9 @@ abstract class AbstractWord extends AbstractAdapter
             $this->error(self::BAD_CAPTCHA);
             return false;
         }
-
+        //Invalidate the captcha after successful use
+        $this->generate();
+        
         return true;
     }
 
