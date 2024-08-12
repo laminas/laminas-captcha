@@ -15,6 +15,7 @@ use function random_int;
 use function strlen;
 use function strtolower;
 use function substr;
+use function preg_match;
 
 /**
  * AbstractWord-based captcha adapter
@@ -394,7 +395,7 @@ abstract class AbstractWord extends AbstractAdapter
         $input = strtolower($value['input']);
         $this->setValue($input);
 
-        if (!isset($value['id']) || ! preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', (string) $value['id'])) {
+        if (! isset($value['id']) || ! preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', (string) $value['id'])) {
             $this->error(self::MISSING_ID);
             return false;
         }
@@ -406,7 +407,7 @@ abstract class AbstractWord extends AbstractAdapter
         }
         //Invalidate the captcha after successful use
         $this->generate();
-        
+
         return true;
     }
 
