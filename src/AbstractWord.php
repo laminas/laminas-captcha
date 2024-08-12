@@ -10,6 +10,7 @@ use function class_exists;
 use function count;
 use function is_array;
 use function md5;
+use function preg_match;
 use function random_bytes;
 use function random_int;
 use function strlen;
@@ -394,7 +395,7 @@ abstract class AbstractWord extends AbstractAdapter
         $input = strtolower($value['input']);
         $this->setValue($input);
 
-        if (!isset($value['id']) || ! preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', (string) $value['id'])) {
+        if (! isset($value['id']) || ! preg_match('/^[a-f0-9][a-f0-9_\\\\]+$/i', (string) $value['id'])) {
             $this->error(self::MISSING_ID);
             return false;
         }
@@ -406,7 +407,7 @@ abstract class AbstractWord extends AbstractAdapter
         }
         //Invalidate the captcha after successful use
         $this->generate();
-        
+
         return true;
     }
 
