@@ -16,7 +16,6 @@ use function random_int;
 use function strlen;
 use function strtolower;
 use function substr;
-use function preg_match;
 
 /**
  * AbstractWord-based captcha adapter
