@@ -405,8 +405,8 @@ abstract class AbstractWord extends AbstractAdapter
             $this->error(self::BAD_CAPTCHA);
             return false;
         }
-        //Invalidate the captcha after successful use
-        $this->generate();
+        //Invalidate the captcha by generating a new word after successful use
+        $this->setWord($this->generateWord());
 
         return true;
     }
