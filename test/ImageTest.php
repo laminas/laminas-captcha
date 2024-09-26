@@ -21,6 +21,7 @@ use function is_dir;
 use function mkdir;
 use function sleep;
 use function strlen;
+use function substr;
 use function sys_get_temp_dir;
 use function unlink;
 
@@ -223,6 +224,24 @@ class ImageTest extends TestCase
         $this->captcha->generate();
         $this->assertFalse($this->captcha->isValid([]));
         $input = ["input" => "blah"];
+        $this->assertFalse($this->captcha->isValid($input));
+    }
+
+    public function testDoubleSubmitNotValidates(): void
+    {
+        $this->captcha->generate();
+        $input = ["id" => $this->captcha->getId(), "input" => $this->captcha->getWord()];
+        $this->assertTrue($this->captcha->isValid($input));
+        $this->assertFalse($this->captcha->isValid($input));
+    }
+
+    public function testInvalidIDCharactersSubmittedNotValidates(): void
+    {
+        $this->captcha->generate();
+        $id    = $this->captcha->getId();
+        $input = ["id" => substr($id, 0, strlen($id) - 1) . "+", "input" => $this->captcha->getWord()];
+        $this->assertFalse($this->captcha->isValid($input));
+        $input = ["id" => substr($id, 0, strlen($id) - 1) . "-", "input" => $this->captcha->getWord()];
         $this->assertFalse($this->captcha->isValid($input));
     }
 
