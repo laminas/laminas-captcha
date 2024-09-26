@@ -239,9 +239,9 @@ class ImageTest extends TestCase
     {
         $this->captcha->generate();
         $id    = $this->captcha->getId();
-        $input = ["id" => \substr($id, 0, strlen($id) - 1) . "+", "input" => $this->captcha->getWord()];
+        $input = ["id" => substr($id, 0, strlen($id) - 1) . "+", "input" => $this->captcha->getWord()];
         $this->assertFalse($this->captcha->isValid($input));
-        $input = ["id" => \substr($id, 0, strlen($id) - 1) . "-", "input" => $this->captcha->getWord()];
+        $input = ["id" => substr($id, 0, strlen($id) - 1) . "-", "input" => $this->captcha->getWord()];
         $this->assertFalse($this->captcha->isValid($input));
     }
 
