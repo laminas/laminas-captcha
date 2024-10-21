@@ -31,11 +31,11 @@
         "laminas/laminas-session": "^2.12",
         "laminas/laminas-stdlib": "^3.10.1",
         "laminas/laminas-text": "^2.9.0",
-        "laminas/laminas-validator": "^2.19.0"
+        "laminas/laminas-validator": "^2.19.0 || ^3.0.0"
     },
     "require-dev": {
         "ext-gd": "*",
-        "laminas/laminas-coding-standard": "~2.5.0",
+        "laminas/laminas-coding-standard": "~3.0.0",
         "phpunit/phpunit": "^9.5.26",
         "psalm/plugin-phpunit": "^0.19.0",
         "vimeo/psalm": "^5.1"
