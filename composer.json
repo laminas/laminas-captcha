@@ -30,7 +30,6 @@
         "laminas/laminas-recaptcha": "^3.4.0",
         "laminas/laminas-session": "^2.12",
         "laminas/laminas-stdlib": "^3.10.1",
-        "laminas/laminas-text": "^2.9.0",
         "laminas/laminas-validator": "^2.19.0"
     },
     "require-dev": {
