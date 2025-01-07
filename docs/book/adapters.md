@@ -87,6 +87,10 @@ CAPTCHA solution and should only be used for testing. It extends
 
 ## Laminas\\Captcha\\Figlet
 
+CAUTION: **Deprecated**
+This adapter is deprecated and will be removed in version 3.0.0.
+Please use the `Laminas\Captcha\Image` adapter instead or one of the other available adapters.
+
 The `Laminas\Captcha\Figlet` adapter utilizes `Laminas\Text\Figlet` to present a
 figlet to the user.
 

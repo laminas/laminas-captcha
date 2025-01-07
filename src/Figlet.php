@@ -12,6 +12,8 @@ use Override;
  *
  * Note that this engine seems not to like numbers
  *
+ * @deprecated This adapter is deprecated and will be removed in version 3.0.0.
+ *             Please use the `Laminas\Captcha\Image` adapter instead or one of the other available adapters.
  * @final This class should not be extended
  */
 class Figlet extends AbstractWord
