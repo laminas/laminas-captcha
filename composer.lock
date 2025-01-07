@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af67261ec35cec53a7f9a320d68220e2",
+    "content-hash": "dfcc43f25e66336bcbb4cc259ffad560",
     "packages": [
         {
             "name": "laminas/laminas-escaper",
@@ -553,64 +553,6 @@
                 }
             ],
             "time": "2022-12-03T18:48:01+00:00"
-        },
-        {
-            "name": "laminas/laminas-text",
-            "version": "2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-text.git",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-text/zipball/8879e75d03e09b0d6787e6680cfa255afd4645a7",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-servicemanager": "^3.4",
-                "laminas/laminas-stdlib": "^3.6",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
-            },
-            "conflict": {
-                "zendframework/zend-text": "*"
-            },
-            "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\Text\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Create FIGlets and text-based tables",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "laminas",
-                "text"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-text/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-text/issues",
-                "rss": "https://github.com/laminas/laminas-text/releases.atom",
-                "source": "https://github.com/laminas/laminas-text"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2021-09-02T16:50:53+00:00"
         },
         {
             "name": "laminas/laminas-uri",
