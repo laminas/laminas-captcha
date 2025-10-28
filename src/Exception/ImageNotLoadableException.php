@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminafinals\Captcha\Exception;
+namespace Laminas\Captcha\Exception;
 
 /**
  * Exception for Laminas\Form component.
