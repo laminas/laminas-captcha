@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\Captcha;
 
 use Laminas\Text\Figlet\Figlet as FigletManager;
+use Override;
 
 /**
  * Captcha based on figlet text rendering service
@@ -46,7 +47,7 @@ class Figlet extends AbstractWord
      *
      * @return string
      */
-    #[\Override]
+    #[Override]
     public function generate()
     {
         $this->useNumbers = false;
@@ -58,7 +59,7 @@ class Figlet extends AbstractWord
      *
      * @return string
      */
-    #[\Override]
+    #[Override]
     public function getHelperName()
     {
         return 'captcha/figlet';

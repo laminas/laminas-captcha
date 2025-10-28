@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\Captcha;
 
-use AllowDynamicProperties;
 use ArrayObject;
 use Laminas\Captcha\Figlet as FigletCaptcha;
 use Laminas\Session\Container as SessionContainer;

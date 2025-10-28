@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\Captcha;
 
 use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
+use Override;
 
 use function array_key_exists;
 use function is_array;
@@ -218,7 +219,7 @@ class ReCaptcha extends AbstractAdapter
      * @param  mixed $value
      * @return $this Provides a fluent interface
      */
-    #[\Override]
+    #[Override]
     public function setOption($key, $value)
     {
         $service = $this->getService();
@@ -240,7 +241,7 @@ class ReCaptcha extends AbstractAdapter
      *
      * @return string
      */
-    #[\Override]
+    #[Override]
     public function generate()
     {
         return "";
@@ -259,7 +260,7 @@ class ReCaptcha extends AbstractAdapter
      * @param  mixed $context
      * @return bool
      */
-    #[\Override]
+    #[Override]
     public function isValid($value, $context = null)
     {
         if (empty($value) && ! is_array($context)) {
@@ -287,7 +288,7 @@ class ReCaptcha extends AbstractAdapter
      *
      * @return string
      */
-    #[\Override]
+    #[Override]
     public function getHelperName()
     {
         return "captcha/recaptcha";

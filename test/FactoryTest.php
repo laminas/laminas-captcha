@@ -12,6 +12,7 @@ use Laminas\Captcha\Image;
 use Laminas\Captcha\ReCaptcha;
 use LaminasTest\Captcha\TestAsset\MockCaptcha;
 use LaminasTest\Captcha\TestAsset\SessionContainer;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function extension_loaded;
@@ -34,7 +35,7 @@ class FactoryTest extends TestCase
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
      */
-    #[\Override]
+    #[Override]
     public function tearDown(): void
     {
         // remove captcha images
