@@ -37,12 +37,12 @@ class SessionContainer
         }
     }
     
-    public function setExpirationHops($hops, $namespace = null)
+    public function setExpirationHops($hops, $namespace = null): void
     {
         $this->data['setExpirationHops'] = $hops;
     }
     
-    public function setExpirationSeconds($seconds)
+    public function setExpirationSeconds($seconds): void
     {
         $this->data['setExpirationSeconds'] = $seconds;
     }
