@@ -12,6 +12,13 @@ class MockCaptcha implements AdapterInterface
     /** @var null|array */
     public $options = [];
 
+    public function __construct($options = null)
+    {
+        if (is_array($options)) {
+            $this->options = $options;
+        }
+    }
+
     /** @inheritDoc */
     #[\Override]
     public function generate()

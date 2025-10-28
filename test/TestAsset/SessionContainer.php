@@ -5,6 +5,8 @@ namespace LaminasTest\Captcha\TestAsset;
 class SessionContainer
 {
     protected static $word;
+    
+    protected $data = [];
 
     public function __isset($name)
     {
@@ -13,5 +15,32 @@ class SessionContainer
         }
 
         return false;
+    }
+    
+    public function __get($name)
+    {
+        if ($name === 'word') {
+            return static::$word;
+        }
+        return $this->data[$name] ?? null;
+    }
+    
+    public function __set($name, $value)
+    {
+        if ($name === 'word') {
+            static::$word = $value;
+        } else {
+            $this->data[$name] = $value;
+        }
+    }
+    
+    public function setExpirationHops($hops, $namespace = null)
+    {
+        $this->data['setExpirationHops'] = $hops;
+    }
+    
+    public function setExpirationSeconds($seconds)
+    {
+        $this->data['setExpirationSeconds'] = $seconds;
     }
 }
