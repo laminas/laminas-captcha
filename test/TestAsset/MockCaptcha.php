@@ -4,6 +4,9 @@ namespace LaminasTest\Captcha\TestAsset;
 
 use Laminas\Captcha\AdapterInterface;
 
+/**
+ * @final This class should not be extended
+ */
 class MockCaptcha implements AdapterInterface
 {
     /** @var null|string */

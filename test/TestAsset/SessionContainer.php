@@ -2,6 +2,9 @@
 
 namespace LaminasTest\Captcha\TestAsset;
 
+/**
+ * @final This class should not be extended
+ */
 class SessionContainer
 {
     protected static $word;

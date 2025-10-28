@@ -11,6 +11,8 @@ use Override;
  * Captcha based on figlet text rendering service
  *
  * Note that this engine seems not to like numbers
+ *
+ * @final This class should not be extended
  */
 class Figlet extends AbstractWord
 {
