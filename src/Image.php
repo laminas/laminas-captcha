@@ -36,6 +36,8 @@ use function unlink;
  * Image-based captcha element
  *
  * Generates image displaying random word
+ *
+ * @final This class should not be extended
  */
 class Image extends AbstractWord
 {

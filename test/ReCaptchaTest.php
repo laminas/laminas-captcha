@@ -15,6 +15,7 @@ use function getenv;
 
 /**
  * @group      Laminas_Captcha
+ * @final This class should not be extended
  */
 class ReCaptchaTest extends TestCase
 {

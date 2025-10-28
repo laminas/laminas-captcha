@@ -18,6 +18,8 @@ use function is_string;
  * Allows to insert captchas driven by ReCaptcha service
  *
  * @see http://recaptcha.net/apidocs/captcha/
+ *
+ * @final This class should not be extended
  */
 class ReCaptcha extends AbstractAdapter
 {

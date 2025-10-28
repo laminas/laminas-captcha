@@ -6,6 +6,8 @@ namespace Laminas\Captcha\Exception;
 
 /**
  * Exception for Laminas\Form component.
+ *
+ * @final This class should not be extended
  */
 class ImageNotLoadableException extends RuntimeException
 {

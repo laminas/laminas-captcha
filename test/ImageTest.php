@@ -28,6 +28,7 @@ use function unlink;
 
 /**
  * @group      Laminas_Captcha
+ * @final This class should not be extended
  */
 class ImageTest extends TestCase
 {

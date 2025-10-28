@@ -12,6 +12,7 @@ use function strlen;
 
 /**
  * @group      Laminas_Captcha
+ * @final This class should not be extended
  */
 class DumbTest extends CommonWordTest
 {

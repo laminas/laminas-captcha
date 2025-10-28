@@ -23,6 +23,9 @@ use function mkdir;
 use function sys_get_temp_dir;
 use function unlink;
 
+/**
+ * @final This class should not be extended
+ */
 class FactoryTest extends TestCase
 {
     /** @var string */

@@ -13,6 +13,7 @@ use Override;
  *
  * @todo This likely needs its own validation since it expects the final word
  *     entered to be the strrev of the word stored.
+ * @final This class should not be extended
  */
 class Dumb extends AbstractWord
 {
