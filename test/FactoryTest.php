@@ -34,6 +34,7 @@ class FactoryTest extends TestCase
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
      */
+    #[\Override]
     public function tearDown(): void
     {
         // remove captcha images

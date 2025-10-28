@@ -6,6 +6,7 @@ namespace LaminasTest\Captcha;
 
 use Laminas\Captcha\Dumb as DumbCaptcha;
 use LaminasTest\Captcha\TestAsset\SessionContainer;
+use Override;
 
 use function strlen;
 
@@ -24,6 +25,7 @@ class DumbTest extends CommonWordTest
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
+    #[Override]
     public function setUp(): void
     {
         if (isset($this->word)) {

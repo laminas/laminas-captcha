@@ -46,6 +46,7 @@ class Figlet extends AbstractWord
      *
      * @return string
      */
+    #[\Override]
     public function generate()
     {
         $this->useNumbers = false;
@@ -57,6 +58,7 @@ class Figlet extends AbstractWord
      *
      * @return string
      */
+    #[\Override]
     public function getHelperName()
     {
         return 'captcha/figlet';

@@ -218,6 +218,7 @@ class ReCaptcha extends AbstractAdapter
      * @param  mixed $value
      * @return $this Provides a fluent interface
      */
+    #[\Override]
     public function setOption($key, $value)
     {
         $service = $this->getService();
@@ -239,6 +240,7 @@ class ReCaptcha extends AbstractAdapter
      *
      * @return string
      */
+    #[\Override]
     public function generate()
     {
         return "";
@@ -257,6 +259,7 @@ class ReCaptcha extends AbstractAdapter
      * @param  mixed $context
      * @return bool
      */
+    #[\Override]
     public function isValid($value, $context = null)
     {
         if (empty($value) && ! is_array($context)) {
@@ -284,6 +287,7 @@ class ReCaptcha extends AbstractAdapter
      *
      * @return string
      */
+    #[\Override]
     public function getHelperName()
     {
         return "captcha/recaptcha";

@@ -10,6 +10,7 @@ use Laminas\Captcha\Exception\NoFontProvidedException;
 use Laminas\Captcha\Image as ImageCaptcha;
 use Laminas\File\Transfer\Exception\RuntimeException;
 use LaminasTest\Captcha\TestAsset\SessionContainer;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function clearstatcache;
@@ -43,6 +44,7 @@ class ImageTest extends TestCase
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
+    #[Override]
     public function setUp(): void
     {
         if (! extension_loaded('gd')) {
@@ -75,6 +77,7 @@ class ImageTest extends TestCase
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
      */
+    #[Override]
     public function tearDown(): void
     {
         // remove captcha images

@@ -8,6 +8,7 @@ use Laminas\Captcha\ReCaptcha;
 use Laminas\Http\Client as HttpClient;
 use Laminas\Http\Client\Adapter\Socket;
 use Laminas\ReCaptcha\ReCaptcha as ReCaptchaService;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function getenv;
@@ -21,6 +22,7 @@ class ReCaptchaTest extends TestCase
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
+    #[Override]
     public function setUp(): void
     {
         if (! getenv('TESTS_LAMINAS_CAPTCHA_RECAPTCHA_SUPPORT')) {

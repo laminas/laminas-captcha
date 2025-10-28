@@ -1,9 +1,10 @@
-<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCaps
+<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.ValidVariableName.final NotCamelCaps
 
 namespace Laminas\Captcha;
 
 use DirectoryIterator;
 use Laminas\Stdlib\ErrorHandler;
+use Override;
 
 use function extension_loaded;
 use function file_exists;
@@ -461,6 +462,7 @@ class Image extends AbstractWord
      *
      * @return string captcha ID
      */
+    #[Override]
     public function generate()
     {
         $id    = parent::generate();
@@ -653,6 +655,7 @@ class Image extends AbstractWord
      *
      * @return string
      */
+    #[Override]
     public function getHelperName()
     {
         return 'captcha/image';
