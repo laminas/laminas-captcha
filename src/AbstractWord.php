@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\Captcha;
 
 use Laminas\Session\Container;
+use Override;
 
 use function class_exists;
 use function count;
@@ -341,6 +342,7 @@ abstract class AbstractWord extends AbstractAdapter
      *
      * @return string session ID
      */
+    #[Override]
     public function generate()
     {
         if (! $this->keepSession) {
@@ -372,6 +374,7 @@ abstract class AbstractWord extends AbstractAdapter
      * @param  mixed $context
      * @return bool
      */
+    #[Override]
     public function isValid($value, $context = null)
     {
         if (! is_array($value)) {
@@ -416,6 +419,7 @@ abstract class AbstractWord extends AbstractAdapter
      *
      * @return string
      */
+    #[Override]
     public function getHelperName()
     {
         return 'captcha/word';

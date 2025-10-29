@@ -7,11 +7,13 @@ namespace LaminasTest\Captcha;
 use ArrayObject;
 use Laminas\Captcha\Figlet as FigletCaptcha;
 use Laminas\Session\Container as SessionContainer;
+use Override;
 
 use function strlen;
 
 /**
  * @group      Laminas_Captcha
+ * @final This class should not be extended
  */
 class FigletTest extends CommonWordTest
 {
@@ -25,6 +27,7 @@ class FigletTest extends CommonWordTest
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
+    #[Override]
     public function setUp(): void
     {
         if (isset($this->word)) {

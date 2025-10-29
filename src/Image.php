@@ -1,9 +1,10 @@
-<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCaps
+<?php // phpcs:disable WebimpressCodingStandard.NamingConventions.ValidVariableName.final NotCamelCaps
 
 namespace Laminas\Captcha;
 
 use DirectoryIterator;
 use Laminas\Stdlib\ErrorHandler;
+use Override;
 
 use function extension_loaded;
 use function file_exists;
@@ -35,6 +36,8 @@ use function unlink;
  * Image-based captcha element
  *
  * Generates image displaying random word
+ *
+ * @final This class should not be extended
  */
 class Image extends AbstractWord
 {
@@ -461,6 +464,7 @@ class Image extends AbstractWord
      *
      * @return string captcha ID
      */
+    #[Override]
     public function generate()
     {
         $id    = parent::generate();
@@ -574,13 +578,13 @@ class Image extends AbstractWord
                     $color   = (imagecolorat($img, $sx, $sy) >> 16) & 0xFF;
                     $colorX  = (imagecolorat($img, $sx + 1, $sy) >> 16) & 0xFF;
                     $colorY  = (imagecolorat($img, $sx, $sy + 1) >> 16) & 0xFF;
-                    $colorXY = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
+                    $colorXy = (imagecolorat($img, $sx + 1, $sy + 1) >> 16) & 0xFF;
                 }
 
-                if ($color === 255 && $colorX === 255 && $colorY === 255 && $colorXY === 255) {
+                if ($color === 255 && $colorX === 255 && $colorY === 255 && $colorXy === 255) {
                     // ignore background
                     continue;
-                } elseif ($color === 0 && $colorX === 0 && $colorY === 0 && $colorXY === 0) {
+                } elseif ($color === 0 && $colorX === 0 && $colorY === 0 && $colorXy === 0) {
                     // transfer inside of the image as-is
                     $newcolor = 0;
                 } else {
@@ -593,7 +597,7 @@ class Image extends AbstractWord
                     $newcolor = $color * $fracX1 * $fracY1
                               + $colorX * $fracX * $fracY1
                               + $colorY * $fracX1 * $fracY
-                              + $colorXY * $fracX * $fracY;
+                              + $colorXy * $fracX * $fracY;
                 }
 
                 imagesetpixel($img2, $x, $y, imagecolorallocate(
@@ -653,6 +657,7 @@ class Image extends AbstractWord
      *
      * @return string
      */
+    #[Override]
     public function getHelperName()
     {
         return 'captcha/image';

@@ -4,6 +4,9 @@ namespace LaminasTest\Captcha\TestAsset;
 
 use Laminas\Captcha\AdapterInterface;
 
+/**
+ * @final This class should not be extended
+ */
 class MockCaptcha implements AdapterInterface
 {
     /** @var null|string */
@@ -12,18 +15,22 @@ class MockCaptcha implements AdapterInterface
     /** @var null|array */
     public $options = [];
 
-    public function __construct(array $options = null)
+    public function __construct($options = null)
     {
-        $this->options = $options;
+        if (is_array($options)) {
+            $this->options = $options;
+        }
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function generate()
     {
         return '';
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function setName($name)
     {
         $this->name = $name;
@@ -31,24 +38,28 @@ class MockCaptcha implements AdapterInterface
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function getName()
     {
         return $this->name ?: '';
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function getHelperName()
     {
         return 'doctype';
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function isValid($value)
     {
         return true;
     }
 
     /** @inheritDoc */
+    #[\Override]
     public function getMessages()
     {
         return [];

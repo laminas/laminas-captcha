@@ -2,27 +2,14 @@
 
 namespace LaminasTest\Captcha\TestAsset;
 
+/**
+ * @final This class should not be extended
+ */
 class SessionContainer
 {
     protected static $word;
-
-    public function __get($name)
-    {
-        if ('word' == $name) {
-            return static::$word;
-        }
-
-        return null;
-    }
-
-    public function __set($name, $value)
-    {
-        if ('word' == $name) {
-            static::$word = $value;
-        } else {
-            $this->$name = $value;
-        }
-    }
+    
+    protected $data = [];
 
     public function __isset($name)
     {
@@ -32,15 +19,31 @@ class SessionContainer
 
         return false;
     }
-
-    public function __call($method, $args)
+    
+    public function __get($name)
     {
-        switch ($method) {
-            case 'setExpirationHops':
-            case 'setExpirationSeconds':
-                $this->$method = array_shift($args);
-                break;
-            default:
+        if ($name === 'word') {
+            return static::$word;
         }
+        return $this->data[$name] ?? null;
+    }
+    
+    public function __set($name, $value)
+    {
+        if ($name === 'word') {
+            static::$word = $value;
+        } else {
+            $this->data[$name] = $value;
+        }
+    }
+    
+    public function setExpirationHops($hops, $namespace = null): void
+    {
+        $this->data['setExpirationHops'] = $hops;
+    }
+    
+    public function setExpirationSeconds($seconds): void
+    {
+        $this->data['setExpirationSeconds'] = $seconds;
     }
 }
