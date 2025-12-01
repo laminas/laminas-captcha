@@ -619,8 +619,7 @@ class Image extends AbstractWord
         }
 
         imagepng($img2, $imgFile);
-        imagedestroy($img);
-        imagedestroy($img2);
+
     }
 
     /**
