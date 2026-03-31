@@ -14,7 +14,6 @@ use function imagecolorallocate;
 use function imagecolorat;
 use function imagecreatefrompng;
 use function imagecreatetruecolor;
-use function imagedestroy;
 use function imagefilledellipse;
 use function imagefilledrectangle;
 use function imageftbbox;
@@ -619,8 +618,6 @@ class Image extends AbstractWord
         }
 
         imagepng($img2, $imgFile);
-        imagedestroy($img);
-        imagedestroy($img2);
     }
 
     /**
