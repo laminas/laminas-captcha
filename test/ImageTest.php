@@ -258,7 +258,9 @@ final class ImageTest extends TestCase
     public function testNoFontProvidedWillThrowException(): void
     {
         $this->expectException(NoFontProvidedException::class);
-        $captcha = new ImageCaptcha();
+        $captcha = new ImageCaptcha([
+            'sessionClass' => SessionContainer::class,
+        ]);
         $captcha->generate();
     }
 
@@ -266,8 +268,9 @@ final class ImageTest extends TestCase
     {
         $this->expectException(ImageNotLoadableException::class);
         $captcha = new ImageCaptcha([
-            'font'       => __DIR__ . '/../Pdf/_fonts/Vera.ttf',
-            'startImage' => 'file_not_found.png',
+            'sessionClass' => SessionContainer::class,
+            'font'         => __DIR__ . '/../Pdf/_fonts/Vera.ttf',
+            'startImage'   => 'file_not_found.png',
         ]);
         $captcha->generate();
     }

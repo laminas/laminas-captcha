@@ -176,6 +176,7 @@ final class FigletTest extends CommonWordTest
 
     /**
      * @group Laminas-5728
+     * @runInSeparateProcess
      */
     public function testSetSessionWorks(): void
     {
