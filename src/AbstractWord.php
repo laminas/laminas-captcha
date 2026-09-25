@@ -387,7 +387,7 @@ abstract class AbstractWord extends AbstractAdapter
 
         $name = $this->getName();
 
-        if (isset($value[$name])) {
+        if ($name !== null && isset($value[$name])) {
             $value = $value[$name];
         }
 
