@@ -12,9 +12,8 @@ use function strlen;
 
 /**
  * @group      Laminas_Captcha
- * @final This class should not be extended
  */
-class DumbTest extends CommonWordTest
+final class DumbTest extends CommonWordTest
 {
     /** @var string */
     protected $wordClass = DumbCaptcha::class;
