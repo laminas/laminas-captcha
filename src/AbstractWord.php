@@ -385,9 +385,10 @@ abstract class AbstractWord extends AbstractAdapter
             $value = $context;
         }
 
-        $name = (string) $this->getName();
+        $name = $this->getName();
 
-        if (isset($value[$name])) {
+        /** @psalm-suppress RedundantConditionGivenDocblockType name is null until setName() is called */
+        if ($name !== null && isset($value[$name])) {
             $value = $value[$name];
         }
 
