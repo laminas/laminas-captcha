@@ -10,3 +10,4 @@
 /test/ export-ignore
 /.laminas-ci.json export-ignore
 /renovate.json export-ignore
+/structarmed.php export-ignore

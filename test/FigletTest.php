@@ -13,9 +13,8 @@ use function strlen;
 
 /**
  * @group      Laminas_Captcha
- * @final This class should not be extended
  */
-class FigletTest extends CommonWordTest
+final class FigletTest extends CommonWordTest
 {
     /** @var string */
     protected $wordClass = FigletCaptcha::class;

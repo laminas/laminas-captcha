@@ -28,9 +28,8 @@ use function unlink;
 
 /**
  * @group      Laminas_Captcha
- * @final This class should not be extended
  */
-class ImageTest extends TestCase
+final class ImageTest extends TestCase
 {
     /** @var string */
     protected $tmpDir;

@@ -15,9 +15,8 @@ use function getenv;
 
 /**
  * @group      Laminas_Captcha
- * @final This class should not be extended
  */
-class ReCaptchaTest extends TestCase
+final class ReCaptchaTest extends TestCase
 {
     /**
      * Sets up the fixture, for example, open a network connection.
