@@ -39,7 +39,7 @@
         "laminas/laminas-coding-standard": "~2.5.0",
         "phpunit/phpunit": "^9.5.26",
         "psalm/plugin-phpunit": "^0.22.0",
-        "vimeo/psalm": "^6.13",
+        "vimeo/psalm": "^7.0",
         "amphp/dns": "^2.4.0",
         "amphp/socket": "^2.3.1"
     },
